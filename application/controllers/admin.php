@@ -53,6 +53,11 @@ class Admin extends CI_Controller {
 		);
 
 		$insert = $this->supplierModel->save($value);
+		if($insert){
+			$this->formSupplier();
+		}else{
+			echo"error";
+		}
 	}
 
 	function updateSupplier(){
