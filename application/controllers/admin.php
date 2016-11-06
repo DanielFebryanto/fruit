@@ -39,6 +39,7 @@ class Admin extends CI_Controller {
 	}
 
 	function saveSupplier(){
+
 		$this->load->model('supplierModel');
 		$idSupplier = $this->generateIdSupplier();
 		$value = array(
@@ -50,9 +51,16 @@ class Admin extends CI_Controller {
 			'kontak'=>$_POST['kontak'],
 			'status_id'=>11,
 			'joinON'=>date("Y-m-d")
-		);
+			);
 
 		$insert = $this->supplierModel->save($value);
+
+
+		if ($insert === TRUE) {
+			$this->session->set_flashdata('flashsucess', '<script>alert("Success To Save Data");</script>');
+			redirect('admin/formSupplier');
+		}
+
 	}
 
 	function updateSupplier(){

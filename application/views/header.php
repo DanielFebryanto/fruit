@@ -34,7 +34,7 @@
                                     <span class="badge bg-green"><?php echo "Notif" ?></span>
                                 </a>
                                 <ul id="menu1" class="dropdown-menu list-unstyled msg_list animated fadeInDown" role="menu">
-                                    <?php echo $notif_message ?>
+                                    
                                     <li>
                                         <div class="text-center">
                                             <a href="<?php echo base_url() ?>index.php/admin/mailbox">
