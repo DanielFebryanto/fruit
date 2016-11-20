@@ -91,7 +91,7 @@
 						</div>
 
 						<div class="clearfix"></div>
-						<br /> <span class="btn btn-primary">validate form</span>
+						<br /> <span class="btn btn-primary">Save</span>
 
 					</form>
 					<!-- end form for validations -->

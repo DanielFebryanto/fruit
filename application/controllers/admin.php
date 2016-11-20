@@ -35,7 +35,7 @@ class Admin extends CI_Controller {
 		$app = $this->load->model('supplierTypeModel');
 		$data['title'] = 'Add New Supplier';
 		$data['SupType'] = $this->supplierTypeModel->getAll();
-		$this->template->display('form/formSupplier',$data);
+		$this->template->display('form/formSupplierEdit',$data);
 	}
 
 	function saveSupplier(){
@@ -63,9 +63,17 @@ class Admin extends CI_Controller {
 
 	}
 
+
+	function listSupplier(){
+		$this->load->model('supplierModel');
+		$data['title'] = 'list of Supplier';
+		$data['supplierGetAll'] = $this->supplierModel->getAll();
+		$this->template->display('table/tableSupplier',$data);
+	}
+
 	function updateSupplier(){
 		$this->load->model('supplierModel');
-		
+
 		$value = array (
 			'supplierType_id' => $_POST ['type'],
 			'namaSupplier' => $_POST ['nama'],

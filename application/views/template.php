@@ -30,6 +30,11 @@
         <link href="<?php echo base_url() ?>assets/css/calendar/fullcalendar.print.css" rel="stylesheet" media="print">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/switchery/switchery.min.css" />
     <script src="<?php echo base_url() ?>assets/js/jquery.min.js"></script>
+    <style type="text/css">
+        .table>tbody>tr>td {
+            vertical-align: middle !important;
+        }
+    </style>
 
     <!--[if lt IE 9]>
         <script src="../assets/js/ie8-responsive-file-warning.js"></script>
