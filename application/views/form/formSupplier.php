@@ -80,8 +80,8 @@
 						<div class="form-group">
 							<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 								<input type="hidden" name="current_url" value="<?php echo $current_url ?>">
-								<button type="submit" class="btn btn-primary">Cancel</button>
-								<button type="submit" id="supplierSubmit" class="btn btn-success">Submit</button>
+								<a class="btn btn-primary" href="<?php echo base_url()?>admin/listSupplier">Back</a>
+								<button type="submit" id="supplierSubmit" class="btn btn-success">Save</button>
 							</div>
 						</div>
 

@@ -39,7 +39,7 @@
                                 </li>
                                 <li><a><i class="fa fa-edit"></i> Supplier<span class="fa fa-chevron-down"></span> </a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="<?php echo base_url() ?>admin/formSupplier">Create New</a>
+                                        <li><a href="<?php echo base_url() ?>admin/listSupplier">Create New</a>
                                         </li>
                                         <li><a href="<?php echo base_url() ?>admin/supplier">Pemasok</a>
                                         </li>
