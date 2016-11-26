@@ -85,6 +85,12 @@
 							</div>
 						</div>
 
+						<?php
+							if ($this->session->flashdata('flashsucess')){
+								echo $this->session->flashdata('flashsucess');
+							}
+						?>
+
 					</form>
 				</div>
 			</div>
