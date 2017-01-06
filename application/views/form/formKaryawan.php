@@ -26,19 +26,19 @@
 				<div class="x_content">
 
 					<!-- start form for validation -->
-					<form id="demo-form">
+					<form id="demo-form" action="<?php echo base_url('admin/saveEmployee') ?>" method="post">
 						<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 							<input type="text" class="form-control has-feedback-left"
-								id="aaaaa" placeholder="Nama Depan" name="namaDepan"> <span
+								id="aaaaa" placeholder="Fullname" name="nama"> <span
 								class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
 						</div>
 
-						<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+						<!-- <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 							<input type="text" class="form-control" id="inputSuccess3"
 								placeholder="Nama Belakang" name="namaBelakang"> <span
 								class="fa fa-user form-control-feedback right"
 								aria-hidden="true"></span>
-						</div>
+						</div> -->
 
 						<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 							<input type="text" class="form-control has-feedback-left"
@@ -53,13 +53,19 @@
 								class="fa fa-phone form-control-feedback right"
 								aria-hidden="true"></span>
 						</div>
+						<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+							<input type="text" class="form-control" id="inputSuccess3"
+								placeholder="Alamat" name="alamat"> <span
+								class="fa fa-address form-control-feedback right"
+								aria-hidden="true"></span>
+						</div>
 						<div class="clearfix"></div>
 						<div class="form-group col-md-offset 2">
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<select id="Departement" name="dep" class="Departement form-control">
+								<select id="dep" name="dep" class="Departement form-control">
 									<option selected hidden="hidden">Choose Departement</option>
 									<?php foreach ($Dep->result_array() as $row) {?>
-									<option value="<?php echo $row['id']?>"><?php echo $row['depName']?></option>
+									<option value="<?php echo $row['iddepartement']?>"><?php echo $row['departementname']?></option>
 									<?php }?>
 								</select>
 							</div>
@@ -73,13 +79,13 @@
 						</div>
 						<div class="clearfix"></div>
 						<br />
-						<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+						<!-- <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 							<input type="text"
 								class="form-control has-feedback-left date-picker" id="birthday"
 								placeholder="Date Of Birth"> <span
 								class="fa fa-calendar form-control-feedback left"
 								aria-hidden="true"></span>
-						</div>
+						</div> -->
 						<div class="clearfix"></div>
 						<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 							Gender
@@ -91,7 +97,7 @@
 						</div>
 
 						<div class="clearfix"></div>
-						<br /> <span class="btn btn-primary">Save</span>
+						<br /> <button class="btn btn-primary">Save</button>
 
 					</form>
 					<!-- end form for validations -->
@@ -121,20 +127,21 @@
    	});
 </script>
 <script>
-// $(function(){
-// 	$(".Departement").change(function () {
-// 		alert("ddd");
-//         var klikID = $(".Departement").val();
-//         $.ajax({
-//             url: "http://localhost/ajax/requestPosition"+ klikID,
-//             dataType: "JSON",
-//         type: "GET",
-//         success: function (data) {
-//                 $("#posisi").html("");
-//                     var selectApp ="<option value='"+value.id+"' >"+value.jabatanName+"</option>";
-//                     $("#posisi").append(selectApp);
-//                 });
-//         }
-//         });
-// });
+ $(function(){
+	$(".Departement").change(function () {
+ 		alert("ddd");
+         var klikID = $(".Departement").val();
+         $.ajax({
+             url: "http://localhost/ajax/requestPosition"+ klikID,
+             dataType: "JSON",
+         type: "GET",
+         success: function (data) {
+			 console.log("data : ", data);
+                 $("#posisi").html("");
+                     var selectApp ="<option value='"+value.idposisi+"' >"+value.posisiname+"</option>";
+                     $("#posisi").append(selectApp);
+                 });
+         }
+        });
+ });
 	</script>

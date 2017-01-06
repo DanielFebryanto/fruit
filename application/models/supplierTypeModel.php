@@ -3,48 +3,50 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SupplierTypeModel extends CI_Model {
 	function save($value){
-		$insert = $this->db->insert('supplierType', $value);
-
-		if($insert){
-			return true;
+		$this->db->trans_begin();
+		
+		$this->db->insert('suppliertype', $value);
+		
+		if ($this->db->trans_status() === FALSE)
+		{
+			$this->db->trans_rollback();
+			return  false;
 		}
-		else{
-			return false;
-		}
+			$this->db->trans_commit();
+			return  true;
 	}
 
 	function edit($clause, $value){
-		$this->db->where('supplierType', $clause);
-		$edit = $this->db->update('supplierType', $value);
-
-		if($edit){
-			return true;
+		$this->db->trans_begin();
+		
+		$this->db->where('suppliertype', $clause);
+		
+		$this->db->update('suppliertype', $value);
+		
+		if ($this->db->trans_status() === FALSE)
+		{
+			$this->db->trans_rollback();
+			return  false;
 		}
-		else{
-			return false;
-		}
+		$this->db->trans_commit();
+		return  true;
 	}
 
-	function delete($clause, $value){
-		$this->db->where('supplierType', $clause);
-		$delete = $this->db->update('supplierType', $value);
-
-		if($delete){
-			return true;
-		}else{
-			return false;
-		}
-	
+	function delete($clause){
+		$this->db->where('suppliertype',$clause);
+		$delete = $this->db->delete('suppliertype');
+		return null;
 	}
 
 	function getAll(){
-		$suplierType = $this->db->get('supplierType');
-		return $suplierType;
+		$dep = $this->db->get('suppliertype');
+		return $dep;
 	}
 
 	function getByClause($clause){
-		$this->db->where('supplier', $clause);
-		$suplierType = $this->db->get('supplierType');
-		return $suplierType;
+		$this->db->geselectt('*');
+		$this->db->where('suppliertype',$clause);
+		$dep = $this->db->get('suppliertype');
+		return $dep;
 	}
 }

@@ -33,37 +33,20 @@ class ProdukModel extends CI_Model {
 	}
 
 	function delete($clause){
-		$this->db->trans_begin();
-		
-		$this->db->where('produk', $clause);
-		
-		$this->db->update('produk', $value);
-		
-		if ($this->db->trans_status() === FALSE)
-		{
-			$this->db->trans_rollback();
-			return  false;
-		}
-		$this->db->trans_commit();
-		return  true;
+		$this->db->where('produk',$clause);
+		$delete = $this->db->delete('produk');
+		return null;
 	}
 
 	function getAll(){
-		$this->db->select('*');
-		$this->db->from('produk');
-		$this->db->join('status','status.id = produk.status_id');
-		$this->db->order_by('namaProduk','ASC');
-		$produk = $this->db->get('');
-		return $produk;
+		$dep = $this->db->get('produk');
+		return $dep;
 	}
 
 	function getByClause($clause){
 		$this->db->select('*');
-		$this->db->from('produk');
-		$this->db->where('produk', $clause);
-		$this->db->join('status','status.id = produk.status_id');
-		$this->db->order_by('namaProduk','ASC');
-		$produk = $this->db->get('');
-		return $produk;
+		$this->db->where('produk',$clause);
+		$dep = $this->db->get('produk');
+		return $dep;
 	}
 }

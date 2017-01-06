@@ -23,18 +23,18 @@ class Admin extends CI_Controller {
 	}
 
 	function formSupplier(){
-		$this->load->model('supplierTypeModel');
+		$this->load->model('supplierModel');
 		$app = $this->loadMisc();
 		$data['title'] = 'Create New Supplier';
-		$data['SupType'] = $this->supplierTypeModel->getAll();
+		$data['SupType'] = $this->supplierModel->getAll();
 		$data['current_url'] = $app['current_url'];
 		$this->template->display('form/formSupplier',$data);
 	}
 	
 	function formupdateSupplier(){
-		$app = $this->load->model('supplierTypeModel');
+		$app = $this->load->model('supplierModel');
 		$data['title'] = 'Add New Supplier';
-		$data['SupType'] = $this->supplierTypeModel->getAll();
+		$data['SupType'] = $this->supplierModel->getAll();
 		$this->template->display('form/formSupplierEdit',$data);
 	}
 
@@ -85,16 +85,16 @@ class Admin extends CI_Controller {
 	}
 
 	function formProduct(){
-		$this->load->model('supplierTypeModel');
+		$this->load->model('produkModel');
 		$data['title'] = 'Create New Product';
-		$data['SupType'] = $this->supplierTypeModel->getAll();
+		$data['SupType'] = $this->produkModel->getAll();
 		$this->template->display('form/formProduk',$data);
 	}
 	
 	function formUpdateProduct(){
-		$this->load->model('supplierTypeModel');
+		$this->load->model('produkModel');
 		$data['title'] = 'Add New Supplier';
-		$data['SupType'] = $this->supplierTypeModel->getAll();
+		$data['SupType'] = $this->produkModel->getAll();
 		$this->template->display('form/formSupplier',$data);
 	}
 	
@@ -111,16 +111,16 @@ class Admin extends CI_Controller {
 	}
 	
 	function formEmployee(){
-		$this->load->model('departemenModel');
+		$this->load->model('departementModel');
 		$data['title'] = 'Create New Employee';
-		$data['Dep'] = $this->departemenModel->getAll();
+		$data['Dep'] = $this->departementModel->getAll();
 		$this->template->display('form/formKaryawan',$data);
 	}
 	
 	function formupdateEmployee(){
-		$this->load->model('supplierTypeModel');
+		$this->load->model('karyawanModel');
 		$data['title'] = 'Add New Supplier';
-		$data['SupType'] = $this->supplierTypeModel->getAll();
+		$data['SupType'] = $this->karyawanModel->getAll();
 		$this->template->display('form/formKaryawan',$data);
 	}
 	
@@ -132,7 +132,24 @@ class Admin extends CI_Controller {
 	}
 	
 	function saveEmployee(){
-		//
+		$this->load->model('karyawanModel');
+		$value = array (
+			'idstatus' => 11110,
+			'idposisi' => $_POST ['pos'],
+			'namapanjang' => $_POST ['nama'],
+			'email' => $_POST ['email'],
+			'password' => $_POST ['email'],
+			'alamat' => $_POST ['alamat'],
+			'gender' => $_POST ['gender'],
+			'kontak' => $_POST ['kontak'] 
+		);
+		$insert = $this->karyawanModel->save($value);
+
+		if($insert){
+			$this->session->set_flashdata('sukses','Data Telah Tersimpan!');
+		}else{
+			$this->session->set_flashdata('error','Ada Kesalahan!!');
+		}
 	}
 	
 	function updateEmployee(){
@@ -142,39 +159,15 @@ class Admin extends CI_Controller {
 	function deleteEmployee(){
 		//
 	}
-	function formTrx(){
-		$this->load->model('produkModel');
-		$data['title'] = 'Create New Transaction';
-		$data['Dep'] = $this->produkModel->getAll();
-		$this->template->display('form/formtrx',$data);
-	}
 	
-	function formupdateTrx(){
-		$this->load->model('supplierTypeModel');
-		$data['title'] = 'Add New Supplier';
-		$data['SupType'] = $this->supplierTypeModel->getAll();
-		$this->template->display('form/formtrx',$data);
-	}
-	
-	function saveTrx(){
-		//
-	}
-	
-	function updateTrx(){
-		//
-	}
-	
-	function deleteTrx(){
-		//
-	}
 	public function testDep(){
 		$this->load->view('testdep');
 	}
 	
 	function saveDep(){
-		$this->load->model('departemenModel');
+		$this->load->model('departementModel');
 		$value = array('id'=>'D-1001', 'depName'=>'test');
-		$save = $this->departemenModel->save($value);
+		$save = $this->departementModel->save($value);
 	}
 	function login(){
 		$this->load->view('login');

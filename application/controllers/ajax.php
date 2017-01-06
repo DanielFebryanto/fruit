@@ -6,9 +6,9 @@ class Ajax extends CI_Controller {
 		parent::__construct();
 	}
 	function requestPosition($idDep){
-		$this->load->model('jabatanModel');
-		$clause = array('departemen_id'=>$idDep);
-		$data['opt'] = $this->jabatanModel->getByClause($clause);
+		$this->load->model('posisiModel');
+		$clause = array('iddepartement'=>$idDep);
+		$data['opt'] = $this->posisiModel->getByClause($clause);
 		$this->load->view('partial/dropDownPartial', $data);
 		
 	}

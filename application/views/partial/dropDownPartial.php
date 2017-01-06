@@ -7,7 +7,7 @@
 <select name="pos" class="Departement form-control">
 	<?php foreach ($opt->result_array() as $row) {?>
 	<option selected hidden="hidden">Choose Position</option>
-	<option value="<?php echo $row['id']?>"><?php echo $row['jabatanName']?></option>
+	<option value="<?php echo $row['idposisi']?>"><?php echo $row['posisiname']?></option>
 <?php 
 	}
 	} ?>

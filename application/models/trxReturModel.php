@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class DepartemenModel extends CI_Model {
+class TrxReturrModel extends CI_Model {
 	function save($value){
 		$this->db->trans_begin();
 		
-		$this->db->insert('departemen', $value);
+		$this->db->insert('trxretur', $value);
 		
 		if ($this->db->trans_status() === FALSE)
 		{
@@ -19,9 +19,9 @@ class DepartemenModel extends CI_Model {
 	function edit($clause, $value){
 		$this->db->trans_begin();
 		
-		$this->db->where('departemen', $clause);
+		$this->db->where('trxretur', $clause);
 		
-		$this->db->update('departemen', $value);
+		$this->db->update('trxretur', $value);
 		
 		if ($this->db->trans_status() === FALSE)
 		{
@@ -33,20 +33,20 @@ class DepartemenModel extends CI_Model {
 	}
 
 	function delete($clause){
-		$this->db->where('departemen',$clause);
-		$delete = $this->db->delete('departemen');
+		$this->db->where('trxretur',$clause);
+		$delete = $this->db->delete('trxretur');
 		return null;
 	}
 
 	function getAll(){
-		$dep = $this->db->get('departemen');
+		$dep = $this->db->get('trxretur');
 		return $dep;
 	}
 
 	function getByClause($clause){
-		$this->db->get('*');
-		$this->db->where('departemen',$clause);
-		$dep = $this->db->get('departemen');
+		$this->db->select('*');
+		$this->db->where('trxretur',$clause);
+		$dep = $this->db->get('trxretur');
 		return $dep;
 	}
 }

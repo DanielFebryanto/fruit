@@ -2,11 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class TrxDetailModel extends CI_Model {
-	
 	function save($value){
 		$this->db->trans_begin();
 		
-		$this->db->insert('trxDetail', $value);
+		$this->db->insert('trxdetail', $value);
 		
 		if ($this->db->trans_status() === FALSE)
 		{
@@ -20,9 +19,9 @@ class TrxDetailModel extends CI_Model {
 	function edit($clause, $value){
 		$this->db->trans_begin();
 		
-		$this->db->where('trxDetail', $clause);
+		$this->db->where('trxdetail', $clause);
 		
-		$this->db->update('trxDetail', $value);
+		$this->db->update('trxdetail', $value);
 		
 		if ($this->db->trans_status() === FALSE)
 		{
@@ -34,32 +33,20 @@ class TrxDetailModel extends CI_Model {
 	}
 
 	function delete($clause){
-		$this->db->where('trxDetail',$clause);
-		$delete = $this->db->delete('trxDetail');
+		$this->db->where('trxdetail',$clause);
+		$delete = $this->db->delete('trxdetail');
 		return null;
 	}
 
 	function getAll(){
-		$this->db->select('*');
-		$this->db->from('trxDetail');
-		$this->db->join('trxHeader','trxHeader.id = trxDetail.trxHeader_id');
-		//$this->db->join('trxType','trxType.id = trxHeader.trxType_id');
-		$this->db->join('produk','produk.id = trxDetail.produk_id');
-		$this->db->order_by('produk.produkName','ASC');
-		$detail = $this->db->get('');
-		return $detail;
+		$dep = $this->db->get('trxdetail');
+		return $dep;
 	}
 
 	function getByClause($clause){
 		$this->db->select('*');
-		$this->db->from('trxDetail');
-		$this->db->where('trxDetail', $clause);
-		$this->db->join('trxHeader','trxHeader.id = trxDetail.trxHeader_id');
-		//$this->db->join('trxType','trxType.id = trxHeader.trxType_id');
-		$this->db->join('produk','produk.id = trxDetail.produk_id');
-		$this->db->order_by('produk.produkName','ASC');
-		$detail = $this->db->get('');
-		return $detail;
-
+		$this->db->where('trxdetail',$clause);
+		$dep = $this->db->get('trxdetail');
+		return $dep;
 	}
 }

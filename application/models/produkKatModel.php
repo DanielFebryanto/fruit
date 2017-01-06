@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class JabatanModel extends CI_Model {
+class ProdukKatModel extends CI_Model {
 	function save($value){
 		$this->db->trans_begin();
 		
-		$this->db->insert('jabatan', $value);
+		$this->db->insert('produkkat', $value);
 		
 		if ($this->db->trans_status() === FALSE)
 		{
@@ -19,9 +19,9 @@ class JabatanModel extends CI_Model {
 	function edit($clause, $value){
 		$this->db->trans_begin();
 		
-		$this->db->where('jabatan', $clause);
+		$this->db->where('produkkat', $clause);
 		
-		$this->db->update('jabatan', $value);
+		$this->db->update('produkkat', $value);
 		
 		if ($this->db->trans_status() === FALSE)
 		{
@@ -33,25 +33,20 @@ class JabatanModel extends CI_Model {
 	}
 
 	function delete($clause){
-		$this->db->where('jabatan',$clause);
-		$delete = $this->db->delete('jabatan');
+		$this->db->where('produkkat',$clause);
+		$delete = $this->db->delete('produkkat');
 		return null;
 	}
 
 	function getAll(){
-		$dep = $this->db->get('jabatan');
-		$this->db->order_by('jabatanName','ASC');
-		$this->db->join('departemen','departemen.id = jabatan.departemen_id');
+		$dep = $this->db->get('produkkat');
 		return $dep;
 	}
 
 	function getByClause($clause){
 		$this->db->select('*');
-		$this->db->from('jabatan');
-		$this->db->where($clause);
-// 		$this->db->join('departemen','departemen.id = jabatan.departemen_id');
-		$this->db->order_by('jabatanName','ASC');
-		$dep = $this->db->get();
+		$this->db->where('produkkat',$clause);
+		$dep = $this->db->get('produkkat');
 		return $dep;
 	}
 }

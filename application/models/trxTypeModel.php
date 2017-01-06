@@ -5,7 +5,7 @@ class TrxTypeModel extends CI_Model {
 	function save($value){
 		$this->db->trans_begin();
 		
-		$this->db->insert('trxType', $value);
+		$this->db->insert('trxtype', $value);
 		
 		if ($this->db->trans_status() === FALSE)
 		{
@@ -19,9 +19,9 @@ class TrxTypeModel extends CI_Model {
 	function edit($clause, $value){
 		$this->db->trans_begin();
 		
-		$this->db->where('trxType', $clause);
+		$this->db->where('trxtype', $clause);
 		
-		$this->db->update('trxType', $value);
+		$this->db->update('trxtype', $value);
 		
 		if ($this->db->trans_status() === FALSE)
 		{
@@ -33,21 +33,20 @@ class TrxTypeModel extends CI_Model {
 	}
 
 	function delete($clause){
-		$this->db->where('trxType',$clause);
-		$delete = $this->db->delete('trxType');
+		$this->db->where('trxtype',$clause);
+		$delete = $this->db->delete('trxtype');
 		return null;
 	}
 
 	function getAll(){
-		$this->db->order_by('typeName','ASC');
-		$dep = $this->db->get('trxType');
+		$dep = $this->db->get('trxtype');
 		return $dep;
 	}
 
 	function getByClause($clause){
-		$this->db->order_by('typeName','ASC');
-		$this->db->where('departemen',$clause);
-		$dep = $this->db->get('departemen');
+		$this->db->select('*');
+		$this->db->where('trxtype',$clause);
+		$dep = $this->db->get('trxtype');
 		return $dep;
 	}
 }

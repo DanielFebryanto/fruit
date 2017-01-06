@@ -39,17 +39,13 @@ class StatusModel extends CI_Model {
 	}
 
 	function getAll(){
-		$this->db->select('*');
-		$this->db->from('status');
-		$this->db->join('statusType');
-		$this->db->order_by('statusName','ASC');
+		$dep = $this->db->get('status');
 		return $dep;
 	}
 
 	function getByClause($clause){
-		$this->db->get('*');
+		$this->db->select('*');
 		$this->db->where('status',$clause);
-		$this->db->order_by('statusName','ASC');
 		$dep = $this->db->get('status');
 		return $dep;
 	}
