@@ -117,17 +117,22 @@ class Admin extends CI_Controller {
 		$this->template->display('form/formKaryawan',$data);
 	}
 	
-	function formupdateEmployee(){
+	function formupdateEmployee($id){
 		$this->load->model('karyawanModel');
+		$this->load->model('departementModel');
+		$value = array(
+			'idkaryawan => $id'
+		);
 		$data['title'] = 'Add New Supplier';
-		$data['SupType'] = $this->karyawanModel->getAll();
-		$this->template->display('form/formKaryawan',$data);
+		$data['Dep'] = $this->departementModel->getAll();
+		$data['Emp'] = $this->karyawanModel->getByClause($value);
+		$this->template->display('form/formKaryawanUpdate',$data);
 	}
 	
 	function listEmployee(){
 		$this->load->model('karyawanModel');
 		$data['title'] = 'list of Employee';
-		$data['SupType'] = $this->karyawanModel->getAll();
+		$data['Emp'] = $this->karyawanModel->getAll();
 		$this->template->display('table/tableKaryawan',$data);
 	}
 	
@@ -146,10 +151,11 @@ class Admin extends CI_Controller {
 		$insert = $this->karyawanModel->save($value);
 
 		if($insert){
-			$this->session->set_flashdata('sukses','Data Telah Tersimpan!');
+			$this->session->set_flashdata('success','Data Telah Tersimpan!');
 		}else{
 			$this->session->set_flashdata('error','Ada Kesalahan!!');
 		}
+		redirect('admin/formEmployee');
 	}
 	
 	function updateEmployee(){

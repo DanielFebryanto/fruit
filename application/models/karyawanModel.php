@@ -39,13 +39,15 @@ class KaryawanModel extends CI_Model {
 	}
 
 	function getAll(){
+		$this->db->join('posisi', 'posisi.idposisi = karyawan.idposisi');
+		$this->db->join('departement', 'departement.iddepartement = posisi.iddepartement');
 		$dep = $this->db->get('karyawan');
 		return $dep;
 	}
 
 	function getByClause($clause){
 		$this->db->select('*');
-		$this->db->where('karyawan',$clause);
+		$this->db->where($clause);
 		$dep = $this->db->get('karyawan');
 		return $dep;
 	}
