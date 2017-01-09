@@ -22,7 +22,7 @@
 			<div class="x_panel">
 				<div class="x_title">
 					<h2>
-						Supplier <small>Create New Supplier</small>
+						Create New Product
 					</h2>
 					<ul class="nav navbar-right panel_toolbox">
 						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -40,79 +40,64 @@
 				</div>
 				<div class="x_content">
 					<br />
-					<form id="demo-form2" method="post" class="form-horizontal form-label-left" action="<?php echo base_url('supplier/save') ?>">
-
+					<form id="demo-form2" action="<?php echo base_url('produk/update') ?>" method="post"
+						class="form-horizontal form-label-left">
+                        <?php foreach ($produk->result_array() as $row) {?>
 						<div class="form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12">Supplier Type</label>
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								Kategori Produk <span class="required">*</span>
+							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<select name="supType" class="form-control">
-									<option selected hidden="hidden">Choose option</option>
-									<?php foreach ($supType->result_array() as $row) {?>
-									<option value="<?php echo $row['idsuppliertype']?>"><?php echo $row['suppliertypename']?></option>
-									<?php }?>
-								</select>
+								<select name="produkKat" required="required"
+									class="form-control col-md-7 col-xs-12">
+									<option value="<?php echo $row['idprodukkat'] ?>" selected hidden> <?php echo $row['produkkatname'] ?> </option>
+									<?php foreach ($produkKat->result_array() as $kat) {?>
+										<option value="<?php echo $kat['idprodukkat'] ?>"><?php echo $kat['produkkatname'] ?> </option>
+									<?php } ?> 
+									</select>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="first-name">Supplier Name <span class="required">*</span>
+								for="first-name">Nama Produk <span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" id="first-name" required="required" name="nama"
+								<input type="text" value="<?php echo $row['namaproduk'] ?>" name="namaProduk" required="required"
 									class="form-control col-md-7 col-xs-12">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="last-name">Supplier Email <span class="required">*</span>
+								for="last-name">Stok <span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" id="last-name" name="email"
+								<input type="text" name="stok" value="<?php echo $row['stok'] ?>"
 									required="required" class="form-control col-md-7 col-xs-12">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="middle-name"
-								class="control-label col-md-3 col-sm-3 col-xs-12">Supplier
-								Contact</label>
+								class="control-label col-md-3 col-sm-3 col-xs-12">Harga / Box</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input id="middle-name" class="form-control col-md-7 col-xs-12"
-									type="text" name="kontak">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="middle-name"
-								class="control-label col-md-3 col-sm-3 col-xs-12">Address</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="middle-name" class="form-control col-md-7 col-xs-12"
-									type="text" name="alamat">
+									value="<?php echo $row['harga'] ?>" type="text" name="harga">
 							</div>
 						</div>
 						
 						<div class="ln_solid"></div>
 						<div class="form-group">
 							<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-								<a class="btn btn-primary" href="<?php echo base_url('supplier/save')?>">Back</a>
-								<button type="submit" id="supplierSubmit" class="btn btn-success">Save</button>
+                            <input type="hidden" name="id" value="<?php echo $row['idproduk'] ?>" />
+								<button type="submit" class="btn btn-primary">Cancel</button>
+								<button type="submit" class="btn btn-success">Submit</button>
 							</div>
 						</div>
-
+                        <?php } ?>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/appValidation.js"></script>
-	<script type="text/javascript">
-                        $(document).ready(function () {
-                            $('#birthday').daterangepicker({
-                                singleDatePicker: true,
-                                calender_style: "picker_1"
-                            }, function (start, end, label) {
-                                console.log(start.toISOString(), end.toISOString(), label);
-                            });
-                        });
-                    </script>
 
 
 </div>

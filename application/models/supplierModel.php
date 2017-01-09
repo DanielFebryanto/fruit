@@ -19,7 +19,7 @@ class SupplierModel extends CI_Model {
 	function edit($clause, $value){
 		$this->db->trans_begin();
 		
-		$this->db->where('supplier', $clause);
+		$this->db->where($clause);
 		
 		$this->db->update('supplier', $value);
 		
@@ -32,10 +32,20 @@ class SupplierModel extends CI_Model {
 		return  true;
 	}
 
-	function delete($clause){
-		$this->db->where('supplier',$clause);
-		$delete = $this->db->delete('supplier');
-		return null;
+	function delete($clause, $value){
+		$this->db->trans_begin();
+		
+		$this->db->where($clause);
+		
+		$this->db->update('supplier', $value);
+		
+		if ($this->db->trans_status() === FALSE)
+		{
+			$this->db->trans_rollback();
+			return  false;
+		}
+		$this->db->trans_commit();
+		return  true;
 	}
 
 	function getAll(){
@@ -45,7 +55,9 @@ class SupplierModel extends CI_Model {
 
 	function getByClause($clause){
 		$this->db->select('*');
-		$this->db->where('supplier',$clause);
+		$this->db->join('suppliertype','suppliertype.idsuppliertype = supplier.idsuppliertype');
+		$this->db->join('status','status.idstatus = supplier.idstatus');
+		$this->db->where($clause);
 		$dep = $this->db->get('supplier');
 		return $dep;
 	}

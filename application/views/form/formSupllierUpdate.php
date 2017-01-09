@@ -3,7 +3,20 @@
 
                     <?php $this->load->view('search')?>
                     <div class="clearfix"></div>
-
+<?php if($this->session->flashdata('success')){ ?>
+<div class="alert alert-success alert-dismissible fade in" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+    </button>
+    <strong>Success</strong> <?php echo $this->session->flashdata('success') ?>
+</div>
+	
+<?php } if($this->session->flashdata('error')){ ?>
+	<div class="alert alert-danger alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+        </button>
+        <strong>Error</strong> <?php echo $this->session->flashdata('error') ?>
+     </div>
+<?php } ?>
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
@@ -27,16 +40,15 @@
 				</div>
 				<div class="x_content">
 					<br />
-					<form id="demo-form2" data-parsley-validate
-						class="form-horizontal form-label-left">
-
+					<form id="demo-form2" method="post" class="form-horizontal form-label-left" action="<?php echo base_url('supplier/update') ?>">
+						<?php foreach ($supp->result_array() as $data) {?>
 						<div class="form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12">Supplier Type</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<select name="type" class="form-control">
-									<option selected hidden="hidden">Choose option</option>
-									<?php foreach ($SupType->result_array() as $row) {?>
-									<option value="<?php echo $row['id']?>"><?php echo $row['typeName']?></option>
+								<select name="supType" class="form-control">
+									<option value="<?php echo $data['idsuppliertype'] ?>" selected hidden="hidden"><?php echo $data['suppliertypename'] ?></option>
+									<?php foreach ($supType->result_array() as $row) {?>
+									<option value="<?php echo $row['idsuppliertype']?>"><?php echo $row['suppliertypename']?></option>
 									<?php }?>
 								</select>
 							</div>
@@ -46,8 +58,8 @@
 								for="first-name">Supplier Name <span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" id="first-name" required="required"
-									class="form-control col-md-7 col-xs-12">
+								<input type="text" id="first-name" required="required" name="nama"
+									value="<?php echo $data['namaPT'] ?>" class="form-control col-md-7 col-xs-12">
 							</div>
 						</div>
 						<div class="form-group">
@@ -55,8 +67,8 @@
 								for="last-name">Supplier Email <span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" id="last-name" name="last-name"
-									required="required" class="form-control col-md-7 col-xs-12">
+								<input type="text" id="last-name" name="email"
+									value="<?php echo $data['email'] ?>"required="required" class="form-control col-md-7 col-xs-12">
 							</div>
 						</div>
 						<div class="form-group">
@@ -65,7 +77,7 @@
 								Contact</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input id="middle-name" class="form-control col-md-7 col-xs-12"
-									type="text" name="middle-name">
+									type="text" name="kontak" value="<?php echo $data['kontak'] ?>">
 							</div>
 						</div>
 						<div class="form-group">
@@ -73,30 +85,30 @@
 								class="control-label col-md-3 col-sm-3 col-xs-12">Address</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input id="middle-name" class="form-control col-md-7 col-xs-12"
-									type="text" name="middle-name">
+									type="text" name="alamat" value="<?php echo $data['alamat'] ?>">
 							</div>
 						</div>
 						
 						<div class="ln_solid"></div>
 						<div class="form-group">
 							<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-								<button type="submit" class="btn btn-primary">Cancel</button>
-								<button type="submit" class="btn btn-success">Submit</button>
+								<input type="hidden" name="idsup" value="<?php echo $data['idsupplier'] ?>" >
+								<input type="hidden" name="return_url" value="<?php echo $data['suppliertypename'] ?>" />
+								<button type="submit" id="supplierSubmit" class="btn btn-success">Save</button>
 							</div>
 						</div>
-
+						<?php } ?>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-
+	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/appValidation.js"></script>
 	<script type="text/javascript">
                         $(document).ready(function () {
                             $('#birthday').daterangepicker({
                                 singleDatePicker: true,
-                                calender_style: "picker_1",
-                                year:true
+                                calender_style: "picker_1"
                             }, function (start, end, label) {
                                 console.log(start.toISOString(), end.toISOString(), label);
                             });

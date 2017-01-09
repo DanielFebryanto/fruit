@@ -8,7 +8,7 @@
                     </small>
                 </h3>
                         </div>
-
+                        
                         <div class="title_right">
                             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                                 <div class="input-group">
@@ -21,7 +21,20 @@
                         </div>
                     </div>
                     <div class="clearfix"></div>
-
+                    <?php if($this->session->flashdata('success')){ ?>
+<div class="alert alert-success alert-dismissible fade in" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+    </button>
+    <strong>Success</strong> <?php echo $this->session->flashdata('success') ?>
+</div>
+	
+<?php } if($this->session->flashdata('error')){ ?>
+	<div class="alert alert-danger alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+        </button>
+        <strong>Error</strong> <?php echo $this->session->flashdata('error') ?>
+     </div>
+<?php } ?>
                     <div class="row">
 
                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -42,49 +55,50 @@
                                         </li>
                                         <li><a href="#"><i class="fa fa-close"></i></a>
                                         </li>
-                                    </ul> 
+                                    </ul>
                                     <div class="clearfix"></div>
                                 </div>
-                                <!-- nambah button untuk add -->
-                                <a class="btn btn-success" href="<?php echo base_url()?>admin/formSupplier">Add New</a>
-                                <!-- end -->
                                 <div class="x_content">
-                                    <table id="example" class="table table-striped responsive-utilities jambo_table" >
+                                    <table id="example" class="table table-striped responsive-utilities jambo_table">
                                         <thead>
                                             <tr class="headings">
-                                               	<th>No</th>
-					               				<th>Nama Supplier</th>
-					               				<th>Email</th>
-					               				<th>Alamat</th>
-					               				<th>Kontak</th>
-					               				<th>Action</th>
+                                                <!-- <th>
+                                                    <input type="checkbox" class="tableflat">
+                                                </th> -->
+                                                <th>Nama Produk </th>
+                                                <th>Kategori </th>
+                                                <th>Stok </th>
+                                                <th>Harga </th>
+                                                <th>Status </th>
+                                                <th class=" no-link last" style="width:150px"><span class="nobr">Action</span>
+                                                </th>
                                             </tr>
                                         </thead>
-										<?php
-											$no = 1; 
-											foreach ($supplierGetAll->result() as $row) 
-										{
-                                            echo '
-                                            <tbody>
-                                                <tr>
-                                                    <td>'.$no++.'</td>
-                                                    <td>'.$row->namaSupplier.'</a></td>
-                                                    <td>'.$row->email.'</a></td>
-                                                    <td>'.$row->alamat.'</a></td>
-                                                    <td>'.$row->kontak.'</a></td>
-                                                    <td style="width: 150px">
-                                                        <a class="btn btn-info btn-xs" href="'.base_url().'admin/formupdateSupplier">Edit</a>
-                                                        <a class="btn btn-danger btn-xs" href="'.base_url().'admin/formupdateSupplier">Delete</a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>';
-                                        
-										} ?>
+
+                                        <tbody>
+                                            <?php foreach ($supp->result_array() as $row) {?>
+                                            <tr class="even pointer">
+                                                <!-- <td class="a-center ">
+                                                    <input type="checkbox" class="tableflat">
+                                                </td> -->
+                                                <td class=" "><?php echo $row['namaPT'] ?></td>
+                                                <td class=" "><?php echo $row['suppliertypename'] ?></td>
+                                                <td class=" "><?php echo $row['email'] ?> pcs</td>
+                                                <td class=" ">IDR <?php echo $row['kontak'] ?></td>
+                                                <td class="a-right a-right "><?php echo $row['statusname'] ?></td>
+                                                <td class=" last">
+                                                    <a href="<?php echo base_url('supplier/edit/'.$row['idsupplier'].'') ?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                                                    <a href="<?php echo base_url('supplier/delete/'.$row['idsupplier'].'/'.$row['suppliertypename'].'') ?>" class="btn btn-danger" ><i class="fa fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <?php } ?>
+                                        </tbody>
+
                                     </table>
                                 </div>
                             </div>
                         </div>
-						
+
                         <br />
                         <br />
                         <br />

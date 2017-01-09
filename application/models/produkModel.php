@@ -19,7 +19,7 @@ class ProdukModel extends CI_Model {
 	function edit($clause, $value){
 		$this->db->trans_begin();
 		
-		$this->db->where('produk', $clause);
+		$this->db->where($clause);
 		
 		$this->db->update('produk', $value);
 		
@@ -32,20 +32,34 @@ class ProdukModel extends CI_Model {
 		return  true;
 	}
 
-	function delete($clause){
-		$this->db->where('produk',$clause);
-		$delete = $this->db->delete('produk');
-		return null;
+	function delete($clause, $value){
+		$this->db->trans_begin();
+		
+		$this->db->where($clause);
+		
+		$this->db->update('produk', $value);
+		
+		if ($this->db->trans_status() === FALSE)
+		{
+			$this->db->trans_rollback();
+			return  false;
+		}
+		$this->db->trans_commit();
+		return  true;
 	}
 
 	function getAll(){
+		$this->db->join('produkkat','produkkat.idprodukkat = produk.idprodukkat');
+		$this->db->join('status','status.idstatus = produk.idstatus');
 		$dep = $this->db->get('produk');
 		return $dep;
 	}
 
 	function getByClause($clause){
 		$this->db->select('*');
-		$this->db->where('produk',$clause);
+		$this->db->where($clause);
+		$this->db->join('produkkat','produkkat.idprodukkat = produk.idprodukkat');
+		$this->db->join('status','status.idstatus = produk.idstatus');
 		$dep = $this->db->get('produk');
 		return $dep;
 	}

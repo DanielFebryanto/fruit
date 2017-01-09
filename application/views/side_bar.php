@@ -39,11 +39,11 @@
                                 </li>
                                 <li><a><i class="fa fa-edit"></i> Supplier<span class="fa fa-chevron-down"></span> </a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="<?php echo base_url() ?>admin/listSupplier">Create New</a>
+                                        <li><a href="<?php echo base_url() ?>supplier/create">Create New</a>
                                         </li>
-                                        <li><a href="<?php echo base_url() ?>admin/supplier">Pemasok</a>
+                                        <li><a href="<?php echo base_url() ?>supplier/pemasok">Pemasok</a>
                                         </li>
-                                        <li><a href="<?php echo base_url() ?>admin/client">Customer</a>
+                                        <li><a href="<?php echo base_url() ?>supplier/pembeli">Pembeli</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -59,9 +59,9 @@
                                 <li><a><i class="fa fa-user"></i> Produk <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         
-                                        <li><a href="<?php echo base_url() ?>admin/formEmployee">Create New Produk</a>
+                                        <li><a href="<?php echo base_url() ?>produk/create">Create New Produk</a>
                                         </li>
-                                        <li><a href="<?php echo base_url() ?>admin/ListEmployee">Daftar Produk</a>
+                                        <li><a href="<?php echo base_url() ?>produk">Daftar Produk</a>
                                         </li>
                                     </ul>
                                 </li>
