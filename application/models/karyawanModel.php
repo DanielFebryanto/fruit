@@ -35,7 +35,7 @@ class KaryawanModel extends CI_Model {
 	function delete($clause, $value){
 		$this->db->trans_begin();
 		
-		$this->db->where('karyawan', $clause);
+		$this->db->where($clause);
 		
 		$this->db->update('karyawan', $value);
 		

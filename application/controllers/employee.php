@@ -12,7 +12,10 @@ class Employee extends CI_Controller {
 	function index(){
 		$this->load->model('karyawanModel');
 		$data['title'] = 'list of Employee';
-		$data['Emp'] = $this->karyawanModel->getAll();
+        $clause = array(
+            'karyawan.idstatus'=>11110
+        );
+		$data['Emp'] = $this->karyawanModel->getByClause($clause);
 		$this->template->display('table/tableKaryawan',$data);
 	}
 
@@ -82,8 +85,19 @@ class Employee extends CI_Controller {
 		redirect('employee/');
 	}
 	
-	function deleteEmployee(){
-		//
+	function delete($id){
+		$this->load->model('karyawanModel');
+        $clause = array(
+            'idkaryawan'=>$id
+        );
+        $value = array(
+            'idstatus'=>11111
+        );
+        $del = $this->karyawanModel->delete($clause, $value);
+        
+        $this->session->set_flashdata('success', 'Data Telah Terhapus');
+        
+		redirect('employee/');
 	}
 
 }
