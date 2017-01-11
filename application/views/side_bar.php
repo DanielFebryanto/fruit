@@ -50,9 +50,9 @@
                                 <li><a><i class="fa fa-user"></i> Employee <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         
-                                        <li><a href="<?php echo base_url() ?>admin/formEmployee">Create New Employee</a>
+                                        <li><a href="<?php echo base_url() ?>employee/create">Create New Employee</a>
                                         </li>
-                                        <li><a href="<?php echo base_url() ?>admin/ListEmployee">List Of Employee</a>
+                                        <li><a href="<?php echo base_url() ?>employee">List Of Employee</a>
                                         </li>
                                     </ul>
                                 </li>

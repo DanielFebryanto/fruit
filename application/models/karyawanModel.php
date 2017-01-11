@@ -19,7 +19,7 @@ class KaryawanModel extends CI_Model {
 	function edit($clause, $value){
 		$this->db->trans_begin();
 		
-		$this->db->where('karyawan', $clause);
+		$this->db->where($clause);
 		
 		$this->db->update('karyawan', $value);
 		
@@ -32,12 +32,21 @@ class KaryawanModel extends CI_Model {
 		return  true;
 	}
 
-	function delete($clause){
-		$this->db->where('karyawan',$clause);
-		$delete = $this->db->delete('karyawan');
-		return null;
+	function delete($clause, $value){
+		$this->db->trans_begin();
+		
+		$this->db->where('karyawan', $clause);
+		
+		$this->db->update('karyawan', $value);
+		
+		if ($this->db->trans_status() === FALSE)
+		{
+			$this->db->trans_rollback();
+			return  false;
+		}
+		$this->db->trans_commit();
+		return  true;
 	}
-
 	function getAll(){
 		$this->db->join('posisi', 'posisi.idposisi = karyawan.idposisi');
 		$this->db->join('departement', 'departement.iddepartement = posisi.iddepartement');
@@ -48,6 +57,8 @@ class KaryawanModel extends CI_Model {
 	function getByClause($clause){
 		$this->db->select('*');
 		$this->db->where($clause);
+		$this->db->join('posisi', 'posisi.idposisi = karyawan.idposisi');
+		$this->db->join('departement', 'departement.iddepartement = posisi.iddepartement');
 		$dep = $this->db->get('karyawan');
 		return $dep;
 	}

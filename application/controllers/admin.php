@@ -110,61 +110,6 @@ class Admin extends CI_Controller {
 		//
 	}
 	
-	function formEmployee(){
-		$this->load->model('departementModel');
-		$data['title'] = 'Create New Employee';
-		$data['Dep'] = $this->departementModel->getAll();
-		$this->template->display('form/formKaryawan',$data);
-	}
-	
-	function formupdateEmployee($id){
-		$this->load->model('karyawanModel');
-		$this->load->model('departementModel');
-		$value = array(
-			'idkaryawan => $id'
-		);
-		$data['title'] = 'Add New Supplier';
-		$data['Dep'] = $this->departementModel->getAll();
-		$data['Emp'] = $this->karyawanModel->getByClause($value);
-		$this->template->display('form/formKaryawanUpdate',$data);
-	}
-	
-	function listEmployee(){
-		$this->load->model('karyawanModel');
-		$data['title'] = 'list of Employee';
-		$data['Emp'] = $this->karyawanModel->getAll();
-		$this->template->display('table/tableKaryawan',$data);
-	}
-	
-	function saveEmployee(){
-		$this->load->model('karyawanModel');
-		$value = array (
-			'idstatus' => 11110,
-			'idposisi' => $_POST ['pos'],
-			'namapanjang' => $_POST ['nama'],
-			'email' => $_POST ['email'],
-			'password' => $_POST ['email'],
-			'alamat' => $_POST ['alamat'],
-			'gender' => $_POST ['gender'],
-			'kontak' => $_POST ['kontak'] 
-		);
-		$insert = $this->karyawanModel->save($value);
-
-		if($insert){
-			$this->session->set_flashdata('success','Data Telah Tersimpan!');
-		}else{
-			$this->session->set_flashdata('error','Ada Kesalahan!!');
-		}
-		redirect('admin/formEmployee');
-	}
-	
-	function updateEmployee(){
-		//
-	}
-	
-	function deleteEmployee(){
-		//
-	}
 	
 	public function testDep(){
 		$this->load->view('testdep');

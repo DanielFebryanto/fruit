@@ -76,7 +76,7 @@
                                                 <td class=" "><?php echo $row['kontak'] ?></td>
                                                 <td class="a-right a-right "><?php echo $row['gender'] ?></td>
                                                 <td class=" last">
-                                                    <a href="<?php echo base_url('admin/formupdateEmployee/'.$row['idkaryawan'].'') ?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                                                    <a href="<?php echo base_url('employee/edit/'.$row['idkaryawan'].'') ?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
                                                     <a href="#" class="btn btn-danger" ><i class="fa fa-trash"></i></a>
                                                 </td>
                                             </tr>

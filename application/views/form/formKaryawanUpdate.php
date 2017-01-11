@@ -21,7 +21,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Create New Employee</h2>
+					<h2>Edit Karyawan</h2>
 					<ul class="nav navbar-right panel_toolbox">
 						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 						</li>
@@ -39,11 +39,11 @@
 				<div class="x_content">
 
 					<!-- start form for validation -->
-					<form id="demo-form" action="<?php echo base_url('admin/saveEmployee') ?>" method="post">
-                    <?php foreach ($Emp->result_array() as $row) {?>
+					<form id="demo-form" action="<?php echo base_url('employee/update') ?>" method="post">
+                    <?php foreach ($Emp->result_array() as $data) {?>
 						<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 							<input type="text" class="form-control has-feedback-left"
-								id="aaaaa" placeholder="Fullname" value= <?php echo $row['namapanjang'] ?> name="nama"> <span
+								id="aaaaa" placeholder="Fullname" value="<?php echo $data['namapanjang'] ?>" name="nama"> <span
 								class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
 						</div>
 
@@ -56,20 +56,20 @@
 
 						<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 							<input type="text" class="form-control has-feedback-left"
-								id="inputSuccess4" placeholder="Email" name="email"> <span
+								id="inputSuccess4" placeholder="Email" value="<?php echo $data['email'] ?>" name="email"> <span
 								class="fa fa-envelope form-control-feedback left"
 								aria-hidden="true"></span>
 						</div>
 
 						<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 							<input type="text" class="form-control" id="inputSuccess5"
-								placeholder="Phone" name="kontak"> <span
+								placeholder="Phone" name="kontak" value="<?php echo $data['kontak'] ?>"> <span
 								class="fa fa-phone form-control-feedback right"
 								aria-hidden="true"></span>
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 							<input type="text" class="form-control" id="inputSuccess3"
-								placeholder="Alamat" name="alamat"> <span
+								placeholder="Alamat" name="alamat" value="<?php echo $data['alamat'] ?>"> <span
 								class="fa fa-address form-control-feedback right"
 								aria-hidden="true"></span>
 						</div>
@@ -77,7 +77,7 @@
 						<div class="form-group col-md-offset 2">
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<select id="dep" name="dep" class="Departement form-control">
-									<option selected hidden="hidden">Choose Departement</option>
+									<option value="<?php echo $data['iddepartement'] ?>" selected hidden="hidden"><?php echo $data['departementname'] ?></option>
 									<?php foreach ($Dep->result_array() as $row) {?>
 									<option value="<?php echo $row['iddepartement']?>"><?php echo $row['departementname']?></option>
 									<?php }?>
@@ -87,7 +87,7 @@
 						<div style="margin-top: -20px;" class="form-group col-md-offset">
 							<div class="posisi col-md-6 col-sm-6 col-xs-12">
 								<select name="pos" class="form-control ">
-									<option class="noClick" selected hidden="hidden">Choose Position</option>
+								<option class="noClick" value="<?php echo $data['idposisi'] ?>" selected hidden="hidden"><?php echo $data['posisiname'] ?></option>
 								</select>
 							</div>
 						</div>
@@ -111,7 +111,9 @@
 						</div>
 
 						<div class="clearfix"></div>
-						<br /> <button class="btn btn-primary">Save</button>
+						<br /> 
+						<input type="hidden" name="id" value="<?php echo $data['idkaryawan'] ?>" />
+						<button class="btn btn-primary">Save</button>
                     <?php } ?>
 					</form>
 					<!-- end form for validations -->
