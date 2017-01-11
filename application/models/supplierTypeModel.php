@@ -45,7 +45,7 @@ class SupplierTypeModel extends CI_Model {
 
 	function getByClause($clause){
 		$this->db->geselectt('*');
-		$this->db->where('suppliertype',$clause);
+		$this->db->where($clause);
 		$dep = $this->db->get('suppliertype');
 		return $dep;
 	}

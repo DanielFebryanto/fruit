@@ -45,7 +45,7 @@ class StatusModel extends CI_Model {
 
 	function getByClause($clause){
 		$this->db->select('*');
-		$this->db->where('status',$clause);
+		$this->db->where($clause);
 		$dep = $this->db->get('status');
 		return $dep;
 	}

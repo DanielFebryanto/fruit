@@ -32,10 +32,20 @@ class TrxTypeModel extends CI_Model {
 		return  true;
 	}
 
-	function delete($clause){
-		$this->db->where('trxtype',$clause);
-		$delete = $this->db->delete('trxtype');
-		return null;
+	function delete($clause, $value){
+		$this->db->trans_begin();
+		
+		$this->db->where($clause);
+		
+		$this->db->update('trxtype', $value);
+		
+		if ($this->db->trans_status() === FALSE)
+		{
+			$this->db->trans_rollback();
+			return  false;
+		}
+		$this->db->trans_commit();
+		return  true;
 	}
 
 	function getAll(){
@@ -45,7 +55,7 @@ class TrxTypeModel extends CI_Model {
 
 	function getByClause($clause){
 		$this->db->select('*');
-		$this->db->where('trxtype',$clause);
+		$this->db->where($clause);
 		$dep = $this->db->get('trxtype');
 		return $dep;
 	}

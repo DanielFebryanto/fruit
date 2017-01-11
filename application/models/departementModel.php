@@ -45,7 +45,7 @@ class DepartementModel extends CI_Model {
 
 	function getByClause($clause){
 		$this->db->select('*');
-		$this->db->where('departement',$clause);
+		$this->db->where($clause);
 		$dep = $this->db->get('departement');
 		return $dep;
 	}

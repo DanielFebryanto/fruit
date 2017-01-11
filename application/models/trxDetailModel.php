@@ -19,7 +19,7 @@ class TrxDetailModel extends CI_Model {
 	function edit($clause, $value){
 		$this->db->trans_begin();
 		
-		$this->db->where('trxdetail', $clause);
+		$this->db->where($clause);
 		
 		$this->db->update('trxdetail', $value);
 		
@@ -32,10 +32,20 @@ class TrxDetailModel extends CI_Model {
 		return  true;
 	}
 
-	function delete($clause){
-		$this->db->where('trxdetail',$clause);
-		$delete = $this->db->delete('trxdetail');
-		return null;
+	function delete($clause, $value){
+		$this->db->trans_begin();
+		
+		$this->db->where($clause);
+		
+		$this->db->update('trxdetail', $value);
+		
+		if ($this->db->trans_status() === FALSE)
+		{
+			$this->db->trans_rollback();
+			return  false;
+		}
+		$this->db->trans_commit();
+		return  true;
 	}
 
 	function getAll(){
@@ -45,7 +55,7 @@ class TrxDetailModel extends CI_Model {
 
 	function getByClause($clause){
 		$this->db->select('*');
-		$this->db->where('trxdetail',$clause);
+		$this->db->where($clause);
 		$dep = $this->db->get('trxdetail');
 		return $dep;
 	}
