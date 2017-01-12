@@ -123,6 +123,7 @@
 $(function(){
 	$(.produkBtn).click(function(){
 		alert("ddd");
+		
 	});
 });
 </script>
