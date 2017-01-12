@@ -9,7 +9,7 @@
 			<div class="x_panel">
 				<div class="x_title">
 					<h2>
-						Create New Product
+						Transaksi Baru
 					</h2>
 					<ul class="nav navbar-right panel_toolbox">
 						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -61,9 +61,10 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Username</th>
+                                                <th>Nama Produk</th>
+                                                <th>Harga</th>
+                                                <th>Qty</th>
+                                                <th>SubTotal</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -72,12 +73,12 @@
                                                 <td>Mark</td>
                                                 <td>Otto</td>
                                                 <td>@mdo</td>
+                                                <td>@mdo</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
+                                                <td colspan="3"> </td>
+                                                <td>Total</td>
+                                                <td>RP. 2.000.000</td>
                                             </tr>
                                         </tbody>
                                     </table>
