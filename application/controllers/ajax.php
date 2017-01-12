@@ -12,4 +12,15 @@ class Ajax extends CI_Controller {
 		$this->load->view('partial/dropDownPartial', $data);
 		
 	}
+
+	function getProduk(){
+		$this->load->model('produkModel');
+		$clause = array(
+			'produk.idstatus'=>11110
+		);
+		$data['produk'] = $this->produkModel->getAll();
+
+		$this->load->view('partial/produkPartial');
+	}
+
 }
