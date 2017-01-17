@@ -56,7 +56,8 @@
 							</div>
 						</div>
 						
-<button type="button" class="btn btn-primary produkBtn" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-plus"></i> Produk</button>
+<!-- <button type="button" class="btn btn-primary produkBtn" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-plus"></i> Produk</button>-->
+<button type="button" class="produkBtn btn btn-primary" data-toggle="modal"><i class="fa fa-plus"></i> Produk</button>
 						 <table class="table table-striped">
                                         <thead>
                                             <tr>
@@ -96,7 +97,7 @@
 		</div>
 	</div>
 
-                                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true" id="modal_produk">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
 
@@ -106,9 +107,22 @@
                                                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <h4>Text in a sssss</h4>
-                                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                                                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                                                <div class="x_content">
+													<table id="example" class="table table-striped responsive-utilities jambo_table">
+														<thead>
+															<tr class="headings">
+																<th>Nama Produk</th>
+																<th>Kategori</th>
+																<th>Harga</th>
+																<th class=" no-link last"><span class="nobr">Action</span></th>
+															</tr>
+														</thead>
+
+														<tbody id="modal_body">
+														</tbody>
+
+													</table>
+												</div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -121,9 +135,24 @@
 
 </div>
 <script>
+
 $(function(){
-	$(.produkBtn).click(function(){
-		alert("ddd");
+	$("#example").datatable(){
+			$.ajax({
+			type: "GET",
+			url: "<?php echo base_url('ajax/getProduk') ?>",
+			success: function(msg){
+				$("#modal_body").append("<tr>"+
+				"<td class=''>121000040</td>"+
+				"<td class=''>121000040</td>"+
+				"<td class=''>121000040</td>"+
+				"<td class='last'><button class='btn btn-success'><i class='fa fa-plus'></i> </td>"+
+				"</tr>");
+			}
+			});
+		};
+	$(".produkBtn").click(function(){
+	$("#modal_produk").modal('show');
 		
 	});
 });
