@@ -69,9 +69,11 @@
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="<?php echo base_url() ?>trx/create"> Create New</a>
                                         </li>
-                                        <li><a href="<?php echo base_url() ?>admin/mailbox"> Purchase Request</a>
+                                        <li><a href="<?php echo base_url() ?>trx/purchaseRequest"> Purchase Request</a>
                                         </li>
-                                        <li><a href="<?php echo base_url() ?>admin/mailbox"> Purchase Order</a>
+                                        <li><a href="<?php echo base_url() ?>trx/preDeliveryOrder"> Pre Delivery Order</a>
+                                        </li>
+                                        <li><a href="<?php echo base_url() ?>trx/deliveryOrder"> Delivery Order</a>
                                         </li>
                                     </ul>
                                 </li>

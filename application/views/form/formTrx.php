@@ -25,17 +25,27 @@
 					</ul>
 					<div class="clearfix"></div>
 				</div>
-				<div class="x_content">
+				
+
+				<div class="x_content" style="margin-top: -20px">
 					<br />
 					<form id="demo-form2" data-parsley-validate
 						class="form-horizontal form-label-left">
+						<div class="form-group">
+							<div class="col-md-6 col-sm-6 col-xs-12" style="padding-left: 0px">
+								<button type="submit" class="btn btn-primary">Cancel</button>
+								<button type="submit" class="btn btn-success">Save</button>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+						<hr style="margin-top: -5px; border-bottom: 1px solid #E6E9ED">
 						<div class="form-group">
 							<label class="control-label col-md-2 col-sm-3 col-xs-12" style="text-align: left;"
 								for="first-name">Pilih Pembeli<span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<button type="button" class="pembeliBtn btn btn-primary" data-toggle="modal"><i class="fa fa-plus"></i> Pembeli</button>
-								<input type="text" id="tglkirim" name="last-name"
+								<input type="text" id="namaPembeli" name="last-name"
 									required="required" disabled="disabled" class="form-control col-md-7 col-xs-12">
 							</div>
 						</div>
@@ -49,6 +59,15 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label class="control-label col-md-2 col-sm-3 col-xs-12" style="text-align: left;"
+								for="last-name">No Tlp <span class="required">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input type="text" id="noTlp" name="last-name"
+									required="required" class="form-control col-md-7 col-xs-12">
+							</div>
+						</div>
+						<div class="form-group">
 							<label for="middle-name"
 								class="control-label col-md-2 col-sm-3 col-xs-12" style="text-align: left;">Alamat</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
@@ -57,6 +76,7 @@
 							</div>
 						</div>
 						
+						<hr>
 
 <button type="button" class="produkBtn btn btn-primary" data-toggle="modal"><i class="fa fa-plus"></i> Produk</button>
 						 <table class="table table-striped responsive-utilities jambo_table bulk_action">
@@ -86,12 +106,12 @@
                                     </table>
 									
 						<div class="ln_solid"></div>
-						<div class="form-group">
-							<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+						<!-- <div class="form-group">
+							<div class="col-md-6 col-sm-6 col-xs-12" style="padding-left: 0px">
 								<button type="submit" class="btn btn-primary">Cancel</button>
 								<button type="submit" class="btn btn-success">Submit</button>
 							</div>
-						</div>
+						</div> -->
 					</form>	
 				</div>
 			</div>
@@ -108,7 +128,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                     </button>
-                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <h4 class="modal-title" id="myModalLabel">Pilih Pembeli</h4>
                 </div>
                 <div class="modal-body">
 					<table id="" class="table table-striped responsive-utilities jambo_table bulk_action">
@@ -128,7 +148,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                 </div>
 
             </div>
@@ -146,7 +166,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                     </button>
-                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <h4 class="modal-title" id="myModalLabel">Pilih Product</h4>
                 </div>
                 <div class="modal-body">
 					<table id="" class="table table-striped responsive-utilities jambo_table bulk_action">
@@ -166,7 +186,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                 </div>
 
             </div>

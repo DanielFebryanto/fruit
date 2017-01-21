@@ -1,7 +1,7 @@
 <div class="nav_menu">
                     <nav class="" role="navigation">
                         <div class="nav toggle">
-                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                            <a id="me-nu_toggle"><i class="fa fa-bars"></i></a>
                         </div>
 
                         <ul class="nav navbar-nav navbar-right">
@@ -29,7 +29,7 @@
                             </li>
 
                             <li role="presentation" class="dropdown">
-                                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false" style="display: none;">
                                     <i class="fa fa-envelope-o"></i>
                                     <span class="badge bg-green"><?php echo "Notif" ?></span>
                                 </a>
