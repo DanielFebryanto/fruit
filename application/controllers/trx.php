@@ -7,9 +7,15 @@ class Trx extends CI_Controller {
  		$this->load->library(array('template'));
 	}
     function index(){
-		$this->load->model('produkModel');
+		//$this->load->model('trxHeaderModel');
+		$this->load->model('supplierModel');
 		$data['title'] = 'Create New Transaction';
-		$data['Dep'] = $this->produkModel->getAll();
+		/*$clause = array(
+            'supplier.idsuppliertype'=>112,
+            'supplier.idstatus'=>11110 //11110 adalah Status Aktif
+        );*/
+		$data['SupName'] = $this->supplierModel->getAll();
+		//$data['ProductName'] = $this->produkModel->getAll();
 		$this->template->display('form/formtrx',$data);
 	}
 	
@@ -21,9 +27,18 @@ class Trx extends CI_Controller {
 	}
 	
 	function create(){
+		$this->load->model('supplierModel');
 		$this->load->model('produkModel');
+		$this->load->model('produkKatModel');
 		$data['title'] = 'Create New Transaction';
-		$data['Dep'] = $this->produkModel->getAll();
+		/*$clause = array(
+            'supplier.idsuppliertype'=>112,
+            'supplier.idstatus'=>11110 //11110 adalah Status Aktif
+        );*/
+		$data['SupName'] = $this->supplierModel->loadDdlPembelitrx();
+		$data['GetProduk'] = $this->produkModel->getAll();
+		$data['GetKategoriProd'] = $this->produkKatModel->getAll();
+		//$data['ProductName'] = $this->produkModel->getAll();
 		$this->template->display('form/formtrx',$data);
 	}
 
@@ -38,4 +53,8 @@ class Trx extends CI_Controller {
 	function delete(){
 		//
 	}
+
+	///////////////////ddl section/////////////////////////////
+
+	
 }
