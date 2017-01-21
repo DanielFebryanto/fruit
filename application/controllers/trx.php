@@ -38,6 +38,7 @@ class Trx extends CI_Controller {
 		$data['SupName'] = $this->supplierModel->loadDdlPembelitrx();
 		$data['GetProduk'] = $this->produkModel->getAll();
 		$data['GetKategoriProd'] = $this->produkKatModel->getAll();
+		$data['getalamat'] = $this->supplierModel->loadDdlPembelitrx();
 		//$data['ProductName'] = $this->produkModel->getAll();
 		$this->template->display('form/formtrx',$data);
 	}

@@ -23,4 +23,6 @@ class Ajax extends CI_Controller {
 		$this->load->view('partial/produkPartial');
 	}
 
+	
+
 }
