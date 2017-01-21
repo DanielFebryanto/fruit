@@ -154,4 +154,98 @@ $(function(){
 		
 	});
 });
+</script>       <div class="modal-body">
+                   <!--ISI MODAL-->
+                   <form id="demo-form2" action="<?php echo base_url('trx/save') ?>" method="post"
+						class="form-horizontal form-label-left">
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="first-name">Nama Produk <span class="required">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<select name="GetProduk" class="form-control">
+									<option selected hidden="hidden">Choose Product </option>
+									<?php foreach ($GetProduk->result_array() as $row) {?>
+									<option value="<?php echo $row['idproduk']?>"><?php echo $row['namaproduk']?></option>
+									<?php }?>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="first-name">Kategori Produk <span class="required">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<select name="GetKategoriProd" class="form-control">
+									<option selected hidden="hidden">Choose Product </option>
+									<?php foreach ($GetKategoriProd->result_array() as $row) {?>
+									<option value="<?php echo $row['idprodukkat']?>"><?php echo $row['produkkatname']?></option>
+									<?php }?>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="last-name">Jumlah Pesanan (gram) <span class="required">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input type="text" name="stok"
+									required="required" class="form-control col-md-7 col-xs-12">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="middle-name"
+								class="control-label col-md-3 col-sm-3 col-xs-12">Harga / 100gram</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input id="middle-name" class="form-control col-md-7 col-xs-12"
+									type="text" name="harga">
+							</div>
+						</div>
+						
+						<!--<div class="ln_solid"></div>-->
+>>>>>>> origin/master
+
+					</form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+	<!-- end modal -->
+</div>
+<script>
+
+$(function(){	
+	$(".produkBtn").click(function(){
+		$.ajax({
+			type: "GET",
+			url: "<?php echo base_url('ajax/getProduk') ?>",
+			success: function(msg){
+				$("#modal_body").append("<tr>"+
+				"<td class=''>121000040</td>"+
+				"<td class=''>121000040</td>"+
+				"<td class=''>121000040</td>"+
+				"<td class='last'><button class='btn btn-success'><i class='fa fa-plus'></i> </td>"+
+				"</tr>");
+			}
+			});
+			$("#modal_produk").modal('show');
+		
+	});
+});
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#tgltrx').daterangepicker({
+            singleDatePicker: true,
+            calender_style: "picker_4",
+            chooseYear:true
+        }, function (start, end, label) {
+            console.log(start.toISOString(), end.toISOString(), label);
+        });
+    });
 </script>

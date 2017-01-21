@@ -61,4 +61,13 @@ class SupplierModel extends CI_Model {
 		$dep = $this->db->get('supplier');
 		return $dep;
 	}
+
+
+	//////////////for ddl trx ////////////////////////////
+	function loadDdlPembelitrx(){
+		$this->db->select('*');
+		$this->db->where('idsuppliertype = 112');
+		$dep = $this->db->get('supplier');
+		return $dep;
+	}
 }

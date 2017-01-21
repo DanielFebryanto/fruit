@@ -63,4 +63,10 @@ class ProdukModel extends CI_Model {
 		$dep = $this->db->get('produk');
 		return $dep;
 	}
+
+	function forDdlModalTrx()
+	{
+		$prodname = $this->db->get('produk');
+		return $prodname;
+	}
 }
