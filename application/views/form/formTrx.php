@@ -30,35 +30,36 @@
 					<form id="demo-form2" data-parsley-validate
 						class="form-horizontal form-label-left">
 						<div class="form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="first-name">Product Name<span class="required">*</span>
+							<label class="control-label col-md-2 col-sm-3 col-xs-12" style="text-align: left;"
+								for="first-name">Pilih Pembeli<span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" id="first-name" required="required"
-									class="form-control col-md-7 col-xs-12">
+								<button type="button" class="pembeliBtn btn btn-primary" data-toggle="modal"><i class="fa fa-plus"></i> Pembeli</button>
+								<input type="text" id="tglkirim" name="last-name"
+									required="required" disabled="disabled" class="form-control col-md-7 col-xs-12">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="last-name">Product Stock <span class="required">*</span>
+							<label class="control-label col-md-2 col-sm-3 col-xs-12" style="text-align: left;"
+								for="last-name">Tanggal Kirim <span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" id="last-name" name="last-name"
-									required="required" class="form-control col-md-7 col-xs-12">
+								<input type="text" id="tglkirim" name="last-name"
+									required="required" class="date-picker form-control col-md-7 col-xs-12">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="middle-name"
-								class="control-label col-md-3 col-sm-3 col-xs-12">Product Price / Box</label>
+								class="control-label col-md-2 col-sm-3 col-xs-12" style="text-align: left;">Alamat</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="middle-name" class="form-control col-md-7 col-xs-12"
-									type="text" name="middle-name">
+								<textarea id="middle-name" class="form-control col-md-7 col-xs-12"
+									type="text" name="middle-name"></textarea>
 							</div>
 						</div>
 						
-<!-- <button type="button" class="btn btn-primary produkBtn" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-plus"></i> Produk</button>-->
+
 <button type="button" class="produkBtn btn btn-primary" data-toggle="modal"><i class="fa fa-plus"></i> Produk</button>
-						 <table class="table table-striped">
+						 <table class="table table-striped responsive-utilities jambo_table bulk_action">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -97,41 +98,82 @@
 		</div>
 	</div>
 
-                                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true" id="modal_produk">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
 
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                                                </button>
-                                                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="x_content">
-													<table id="" class="table table-striped responsive-utilities">
-														<thead>
-															<tr class="headings">
-																<th>Nama Produk</th>
-																<th>Kategori</th>
-																<th>Harga</th>
-																<th class=" no-link last"><span class="nobr">Action</span></th>
-															</tr>
-														</thead>
+	<!-- modal pembeli -->
 
-														<tbody id="modal_body">
-														</tbody>
+	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true" id="modal_pembeli">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
 
-													</table>
-												</div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Save changes</button>
-                                            </div>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+					<table id="" class="table table-striped responsive-utilities jambo_table bulk_action">
+						<thead>
+							<tr class="headings">
+								<th>Nama Produk</th>
+								<th>Kategori</th>
+								<th>Harga</th>
+								<th class=" no-link last"><span class="nobr">Action</span></th>
+							</tr>
+						</thead>
 
-                                        </div>
-                                    </div>
-                                </div>
+						<tbody id="modal_body_pembeli">
+						</tbody>
+
+					</table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+	<!-- end of modal pembeli -->
+
+	<!-- modal product -->
+
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true" id="modal_produk">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+					<table id="" class="table table-striped responsive-utilities jambo_table bulk_action">
+						<thead>
+							<tr class="headings">
+								<th>Nama Produk</th>
+								<th>Kategori</th>
+								<th>Harga</th>
+								<th class=" no-link last"><span class="nobr">Action</span></th>
+							</tr>
+						</thead>
+
+						<tbody id="modal_body">
+						</tbody>
+
+					</table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- end of modal product -->
 
 </div>
 <script>
@@ -155,4 +197,22 @@ $(function(){
 		
 	});
 });
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+        $('#tglkirim').daterangepicker({
+            singleDatePicker: true,
+            calender_style: "picker_4",
+            chooseYear:true
+        }, function (start, end, label) {
+            console.log(start.toISOString(), end.toISOString(), label);
+        });
+    });
+</script>
+
+<script type="text/javascript">
+	$('.pembeliBtn').click(function(){
+		$('#modal_pembeli').modal('show');
+	});
 </script>
