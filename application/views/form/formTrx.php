@@ -108,7 +108,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <div class="x_content">
-													<table id="example" class="table table-striped responsive-utilities jambo_table">
+													<table id="example" class="table table-striped responsive-utilities">
 														<thead>
 															<tr class="headings">
 																<th>Nama Produk</th>
@@ -136,9 +136,9 @@
 </div>
 <script>
 
-$(function(){
-	$("#example").datatable(){
-			$.ajax({
+$(function(){	
+	$(".produkBtn").click(function(){
+		$.ajax({
 			type: "GET",
 			url: "<?php echo base_url('ajax/getProduk') ?>",
 			success: function(msg){
@@ -150,9 +150,7 @@ $(function(){
 				"</tr>");
 			}
 			});
-		};
-	$(".produkBtn").click(function(){
-	$("#modal_produk").modal('show');
+			$("#modal_produk").modal('show');
 		
 	});
 });
