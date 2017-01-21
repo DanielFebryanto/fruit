@@ -108,12 +108,12 @@
                                             </div>
                                             <div class="modal-body">
                                                 <div class="x_content">
-													<table id="example" class="table table-striped responsive-utilities">
+													<table id="" class="table table-striped responsive-utilities">
 														<thead>
 															<tr class="headings">
 																<th>Nama Produk</th>
 																<th>Kategori</th>
-											 					<th>Harga</th>
+																<th>Harga</th>
 																<th class=" no-link last"><span class="nobr">Action</span></th>
 															</tr>
 														</thead>
@@ -138,6 +138,7 @@
 
 $(function(){	
 	$(".produkBtn").click(function(){
+		$("#modal_body").html("");
 		$.ajax({
 			type: "GET",
 			url: "<?php echo base_url('ajax/getProduk') ?>",
