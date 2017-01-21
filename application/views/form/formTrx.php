@@ -138,6 +138,7 @@
 
 $(function(){	
 	$(".produkBtn").click(function(){
+		$("#modal_body").html("");
 		$.ajax({
 			type: "GET",
 			url: "<?php echo base_url('ajax/getProduk') ?>",
