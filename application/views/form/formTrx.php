@@ -28,45 +28,37 @@
 				<div class="x_content">
 					<br />
 					<form id="demo-form2" data-parsley-validate
-						class="form-horizontal form-label-left" action="<?php echo base_url('trx/save') ?>" method="post">
+						class="form-horizontal form-label-left">
 						<div class="form-group">
-							<label class="control-label col-md-2 col-sm-3 col-xs-12" style="text-align: left;"
-								for="first-name">Pembeli <span class="required">*</span>
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="first-name">Product Name<span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<select name="SupName" class="form-control">
-									<option selected hidden="hidden">Choose Pembeli </option>
-									<?php foreach ($SupName->result_array() as $row) {?>
-									<option value="<?php echo $row['idsupplier']?>"><?php echo $row['namaPT']?></option>
-									<?php }?>
-								</select>
+								<input type="text" id="first-name" required="required"
+									class="form-control col-md-7 col-xs-12">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12"
+								for="last-name">Product Stock <span class="required">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input type="text" id="last-name" name="last-name"
+									required="required" class="form-control col-md-7 col-xs-12">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="middle-name"
-								class="control-label col-md-2 col-sm-3 col-xs-12" style="text-align: left;">Tanggal Kirim <span class="required">*</span> 
-							</label>
+								class="control-label col-md-3 col-sm-3 col-xs-12">Product Price / Box</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="tgltrx" class="date-picker form-control col-md-7 col-xs-12"
+								<input id="middle-name" class="form-control col-md-7 col-xs-12"
 									type="text" name="middle-name">
 							</div>
 						</div>
-						<div class="form-group">
-							<label class="control-label col-md-2 col-sm-3 col-xs-12" style="text-align: left;"
-								for="last-name">Alamat <span class="required">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<textarea id="middle-name" class="form-control col-md-7 col-xs-12"
-									type="text" name="middle-name"></textarea>
-							</div>
-						</div>
 						
-						
-					<div style="margin-bottom: 30px"></div>
-					<hr>
-
-<button type="button" class="btn btn-primary produkBtn" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-plus"></i> Produk</button>
-						 <table class="table table-striped responsive-utilities jambo_table bulk_action">
+<!-- <button type="button" class="btn btn-primary produkBtn" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-plus"></i> Produk</button>-->
+<button type="button" class="produkBtn btn btn-primary" data-toggle="modal"><i class="fa fa-plus"></i> Produk</button>
+						 <table class="table table-striped">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -104,95 +96,62 @@
 			</div>
 		</div>
 	</div>
-	
-	<!-- modal  -->
-    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
 
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">Add Product</h4>
-                </div>
-                <div class="modal-body">
-                   <!--ISI MODAL-->
-                   <form id="demo-form2" action="<?php echo base_url('trx/save') ?>" method="post"
-						class="form-horizontal form-label-left">
-						<div class="form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="first-name">Nama Produk <span class="required">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<select name="GetProduk" class="form-control">
-									<option selected hidden="hidden">Choose Product </option>
-									<?php foreach ($GetProduk->result_array() as $row) {?>
-									<option value="<?php echo $row['idproduk']?>"><?php echo $row['namaproduk']?></option>
-									<?php }?>
-								</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="first-name">Kategori Produk <span class="required">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<select name="GetKategoriProd" class="form-control">
-									<option selected hidden="hidden">Choose Product </option>
-									<?php foreach ($GetKategoriProd->result_array() as $row) {?>
-									<option value="<?php echo $row['idprodukkat']?>"><?php echo $row['produkkatname']?></option>
-									<?php }?>
-								</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="last-name">Jumlah Pesanan (gram) <span class="required">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" name="stok"
-									required="required" class="form-control col-md-7 col-xs-12">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="middle-name"
-								class="control-label col-md-3 col-sm-3 col-xs-12">Harga / 100gram</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="middle-name" class="form-control col-md-7 col-xs-12"
-									type="text" name="harga">
-							</div>
-						</div>
-						
-						<!--<div class="ln_solid"></div>-->
+                                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true" id="modal_produk">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
 
-					</form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="x_content">
+													<table id="example" class="table table-striped responsive-utilities">
+														<thead>
+															<tr class="headings">
+																<th>Nama Produk</th>
+																<th>Kategori</th>
+											 					<th>Harga</th>
+																<th class=" no-link last"><span class="nobr">Action</span></th>
+															</tr>
+														</thead>
 
-            </div>
-        </div>
-    </div>
-	<!-- end modal -->
+														<tbody id="modal_body">
+														</tbody>
+
+													</table>
+												</div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
 </div>
 <script>
-$(function(){
-	$(.produkBtn).click(function(){
-		alert("ddd");
+
+$(function(){	
+	$(".produkBtn").click(function(){
+		$.ajax({
+			type: "GET",
+			url: "<?php echo base_url('ajax/getProduk') ?>",
+			success: function(msg){
+				$("#modal_body").append("<tr>"+
+				"<td class=''>121000040</td>"+
+				"<td class=''>121000040</td>"+
+				"<td class=''>121000040</td>"+
+				"<td class='last'><button class='btn btn-success'><i class='fa fa-plus'></i> </td>"+
+				"</tr>");
+			}
+			});
+			$("#modal_produk").modal('show');
 		
 	});
 });
-</script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#tgltrx').daterangepicker({
-            singleDatePicker: true,
-            calender_style: "picker_4",
-            chooseYear:true
-        }, function (start, end, label) {
-            console.log(start.toISOString(), end.toISOString(), label);
-        });
-    });
 </script>

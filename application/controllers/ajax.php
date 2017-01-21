@@ -19,8 +19,11 @@ class Ajax extends CI_Controller {
 			'produk.idstatus'=>11110
 		);
 		$data['produk'] = $this->produkModel->getAll();
-
-		$this->load->view('partial/produkPartial');
+		
+		foreach($data['produk']->result_array() as $row){
+			$ee[] = $row;
+		}
+		echo json_encode($ee);
 	}
 
 	
