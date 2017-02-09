@@ -203,14 +203,18 @@ $(function(){
 		$("#modal_body").html("");
 		$.ajax({
 			type: "GET",
+			dataType:"JSON",
 			url: "<?php echo base_url('ajax/getProduk') ?>",
-			success: function(msg){
-				$("#modal_body").append("<tr>"+
-				"<td class=''>121000040</td>"+
-				"<td class=''>121000040</td>"+
-				"<td class=''>121000040</td>"+
-				"<td class='last'><button class='btn btn-success'><i class='fa fa-plus'></i> </td>"+
-				"</tr>");
+			success: function(obj){
+				$.each( obj, function( key, value ) {
+					console.log(value);
+					$("#modal_body").append("<tr>"+
+					"<td class=''>"+value.namaproduk+"</td>"+
+					"<td class=''>"+value.produkkatname+"</td>"+
+					"<td class=''>"+value.harga+"</td>"+
+					"<td class='last'><button class='btn btn-success'><i class='fa fa-plus'></i> </td>"+
+					"</tr>");
+				});
 			}
 			});
 			$("#modal_produk").modal('show');

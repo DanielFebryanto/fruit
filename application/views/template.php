@@ -13,13 +13,8 @@
     <!-- Bootstrap core CSS -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link href="<?php echo base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/vendors/bootstrap-wysihtml5/src/bootstrap-wysihtml5.css">
     <link href="<?php echo base_url() ?>assets/fonts/css/font-awesome.min.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/css/animate.min.css" rel="stylesheet">
-    
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/iCheck/flat/blue.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/dist/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/dist/css/AdminLTE.min.css">
     <!-- Custom styling plus plugins -->
     <link href="<?php echo base_url() ?>assets/css/custom.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/css/icheck/flat/green.css" rel="stylesheet">
@@ -45,14 +40,6 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <script type="text/javascript">
-    function loadCart()	{
-			$('#jmlcart2').load('<?php echo base_url(); ?>index.php/admin/load_add_jurnalis');
-			$('#keranjang').load('<?php echo base_url(); ?>index.php/admin/load_add_jurnalis');
-			$('#gambar').load('<?php echo base_url(); ?>index.php/jurnalis/load_add_jurnalis');
-		}
-		setInterval (loadCart, 5000);
-</script>
 <script type="text/javascript">
     var status = "";
 		function tampilForm(frm){
@@ -115,7 +102,7 @@
                         <div class="modal-content">
 
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">ï¿½</button>
                                 <h4 class="modal-title" id="myModalLabel">New Calender Entry</h4>
                             </div>
                             <div class="modal-body">
@@ -148,7 +135,7 @@
                         <div class="modal-content">
 
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">ï¿½</button>
                                 <h4 class="modal-title" id="myModalLabel2">Edit Calender Entry</h4>
                             </div>
                             <div class="modal-body">
@@ -204,7 +191,6 @@
         <script src="<?php echo base_url() ?>assets/js/cropping/cropper.min.js"></script>
         <script src="<?php echo base_url() ?>assets/js/cropping/main.js"></script>
         <script src="<?php echo base_url() ?>assets/js/tags/jquery.tagsinput.min.js"></script>
-        <script src="<?php echo base_url()?>assets/docs.min.js"></script>
         <!-- Datatables -->
         <script src="<?php echo base_url() ?>assets/js/datatables/js/jquery.dataTables.js"></script>
         <script src="<?php echo base_url() ?>assets/js/datatables/tools/js/dataTables.tableTools.js"></script>
@@ -259,58 +245,6 @@
                     }
                 });
             });
-        </script>
-        
-    <script src="<?php echo base_url() ?>assets/vendors/ckeditor/ckeditor.js"></script>
-        
-       
-		<script src="<?php echo base_url() ?>assets/vendors/bootstrap-wysihtml5/src/bootstrap-wysihtml5.js"></script>
-    <script src="<?php echo base_url() ?>assets/vendors/ckeditor/ckeditor.js"></script>
-		<script src="<?php echo base_url() ?>assets/vendors/ckeditor/adapters/jquery.js"></script>
-    
-    <script>
-        $(function() {
-            // Bootstrap
-            $('#bootstrap-editor').wysihtml5();
-
-            // Ckeditor standard
-            $( 'textarea#ckeditor_standard' ).ckeditor({width:'98%', height: '150px', toolbar: [
-				{ name: 'document', items: [ 'Source', '-', 'NewPage', 'Preview', '-', 'Templates' ] },	// Defines toolbar group with name (used to create voice label) and items in 3 subgroups.
-				[ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ],			// Defines toolbar group without name.
-				{ name: 'basicstyles', items: [ 'Bold', 'Italic' ] }
-			]});
-            $( 'textarea#ckeditor_full' ).ckeditor({width:'98%', height: '150px'});
-        });
-
-        // Tiny MCE
-        tinymce.init({
-		    selector: "#tinymce_basic",
-		    plugins: [
-		        "advlist autolink lists link image charmap print preview anchor",
-		        "searchreplace visualblocks code fullscreen",
-		        "insertdatetime media table contextmenu paste"
-		    ],
-		    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
-		});
-
-		// Tiny MCE
-        tinymce.init({
-		    selector: "#tinymce_full",
-		    plugins: [
-		        "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-		        "searchreplace wordcount visualblocks visualchars code fullscreen",
-		        "insertdatetime media nonbreaking save table contextmenu directionality",
-		        "emoticons template paste textcolor"
-		    ],
-		    toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-		    toolbar2: "print preview media | forecolor backcolor emoticons",
-		    image_advtab: true,
-		    templates: [
-		        {title: 'Test template 1', content: 'Test 1'},
-		        {title: 'Test template 2', content: 'Test 2'}
-		    ]
-		});
-
         </script>
 </body>
 

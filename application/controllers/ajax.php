@@ -21,7 +21,7 @@ class Ajax extends CI_Controller {
 		$data['produk'] = $this->produkModel->getAll();
 		
 		foreach($data['produk']->result_array() as $row){
-			$ee[] = $row;
+		$ee[] =$row;
 		}
 		echo json_encode($ee);
 	}
