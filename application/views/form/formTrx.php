@@ -212,15 +212,38 @@ $(function(){
 					"<td class=''>"+value.namaproduk+"</td>"+
 					"<td class=''>"+value.produkkatname+"</td>"+
 					"<td class=''>"+value.harga+"</td>"+
-					"<td class='last'><button class='btn btn-success'><i class='fa fa-plus'></i> </td>"+
+					"<td class='last'><button id='"+value.idproduk+"' class='btn btn-success' onclick='selectedProduk("+value.idproduk+")'><i class='fa fa-plus'></i> </td>"+
 					"</tr>");
 				});
 			}
 			});
 			$("#modal_produk").modal('show');
-		
+	});
+
+	$(".produkClickBtn").click(function(){
+		var t = $('.produkClickBtn').attr('id');
+		alert(t);
 	});
 });
+
+function selectedProduk(id){
+	$.ajax({
+			type: "GET",
+			dataType:"JSON",
+			url: "<?php echo base_url('ajax/getSelectedProduk') ?>",
+			success: function(obj){
+				$.each( obj, function( key, value ) {
+					console.log(value);
+					$("#modal_body").append("<tr>"+
+					"<td class=''>"+value.namaproduk+"</td>"+
+					"<td class=''>"+value.produkkatname+"</td>"+
+					"<td class=''>"+value.harga+"</td>"+
+					"<td class='last'><button id='"+value.idproduk+"' class='btn btn-success' onclick='selectedProduk("+value.idproduk+")'><i class='fa fa-plus'></i> </td>"+
+					"</tr>");
+				});
+			}
+			});
+}
 </script>
 
 <script type="text/javascript">

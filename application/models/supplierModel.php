@@ -49,6 +49,8 @@ class SupplierModel extends CI_Model {
 	}
 
 	function getAll(){
+		$this->db->join('suppliertype','suppliertype.idsuppliertype = supplier.idsuppliertype');
+		$this->db->join('status','status.idstatus = supplier.idstatus');
 		$dep = $this->db->get('supplier');
 		return $dep;
 	}

@@ -26,6 +26,34 @@ class Ajax extends CI_Controller {
 		echo json_encode($ee);
 	}
 
-	
+	function getSelectedProduk($id){
+		$this->load->model('produkModel');
+		$clause = array(
+			'idproduk'=>$id
+		);
+		$data = $this->produkModel->getByClause($clause);
+		foreach($data->result_array() as $row){
+			$asa[] = $row;
+		}
+		echo json_encode($asa);
+	}
 
+	function getCustomer(){
+		$this->load->model('supplierModel');
+		$clause = array(
+			'produk.idstatus'=>11110
+		);
+	}
+
+	function getSelectedCustomer($id){
+		$this->load->model('supplierModel');
+		$clause = array(
+			'idsupplier'=>$id
+		);
+		$data = $this->supplierModel->getByClause($clause);
+		foreach($data->result_array() as $row){
+			$asa[] = $row;
+		}
+		echo json_encode($asa);
+	}
 }
