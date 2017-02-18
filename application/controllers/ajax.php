@@ -41,7 +41,8 @@ class Ajax extends CI_Controller {
 	function getCustomer(){
 		$this->load->model('supplierModel');
 		$clause = array(
-			'supplier.idsuppliertype'=>112
+			'supplier.idsuppliertype'=>112,
+			'supplier.idstatus'=>11110
 		);
 
 		$data['supplier'] = $this->supplierModel->getByClause($clause);
