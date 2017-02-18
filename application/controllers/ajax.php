@@ -57,7 +57,7 @@ class Ajax extends CI_Controller {
 	function getSelectedCustomer($id){
 		$this->load->model('supplierModel');
 		$clause = array(
-			'idsupplier'=>$id
+			'idsupplier'=> $id
 		);
 		$data = $this->supplierModel->getByClause($clause);
 		foreach($data->result_array() as $row){

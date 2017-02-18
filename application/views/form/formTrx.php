@@ -45,7 +45,7 @@
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<button type="button" class="pembeliBtn btn btn-primary" data-toggle="modal"><i class="fa fa-plus"></i> Pembeli</button>
-								<input type="text" id="namaPembeli" name="last-name"
+								<input type="text" id="namaPembeli" name="last-name" value="Nama Pembeli" 
 									required="required" disabled="disabled" class="form-control col-md-7 col-xs-12">
 							</div>
 						</div>
@@ -63,7 +63,7 @@
 								for="last-name">No Tlp <span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" id="noTlp" name="last-name"
+								<input type="text" id="noTlp" name="last-name" id="noTlp" 
 									required="required" class="form-control col-md-7 col-xs-12">
 							</div>
 						</div>
@@ -71,7 +71,7 @@
 							<label for="middle-name"
 								class="control-label col-md-2 col-sm-3 col-xs-12" style="text-align: left;">Alamat</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<textarea id="middle-name" class="form-control col-md-7 col-xs-12"
+								<textarea id="alamat" class="form-control col-md-7 col-xs-12"
 									type="text" name="middle-name"></textarea>
 							</div>
 						</div>
@@ -81,16 +81,18 @@
 <button type="button" class="produkBtn btn btn-primary" data-toggle="modal"><i class="fa fa-plus"></i> Produk</button>
 						 <table class="table table-striped responsive-utilities jambo_table bulk_action">
                                         <thead>
-                                            <tr>
-                                                <th>#</th>
+                                            <tr class="headings">
+                                                <!-- <th>#</th> -->
+                                                <th>Id</th>
                                                 <th>Nama Produk</th>
+                                                <th>Kategori</th>
                                                 <th>Harga</th>
                                                 <th>Qty</th>
                                                 <th>SubTotal</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
+                                        <tbody id="tablebawah">
+                                          <!--   <tr>
                                                 <th scope="row">1</th>
                                                 <td>Mark</td>
                                                 <td>Otto</td>
@@ -101,7 +103,7 @@
                                                 <td colspan="3"> </td>
                                                 <td>Total</td>
                                                 <td>RP. 2.000.000</td>
-                                            </tr>
+                                            </tr> -->
                                         </tbody>
                                     </table>
 									
@@ -212,7 +214,7 @@ $(function(){
 					"<td class=''>"+value.namaproduk+"</td>"+
 					"<td class=''>"+value.produkkatname+"</td>"+
 					"<td class=''>"+value.harga+"</td>"+
-					"<td class='last'><button id='"+value.idproduk+"' class='btn btn-success' onclick='selectedPembeli("+value.idproduk+")'><i class='fa fa-plus'></i> </td>"+
+					"<td class='last'><button id='"+value.idproduk+"' class='btn btn-success' onclick='selectedProduk("+value.idproduk+")'><i class='fa fa-plus'></i> </td>"+
 					"</tr>");
 				});
 			}
@@ -236,12 +238,12 @@ $(function(){
 			url: "<?php echo base_url('ajax/getCustomer') ?>",
 			success: function(obj){
 				$.each( obj, function( key, value ) {
-					console.log(value);
+					//console.log(value);
 					$("#modal_body_pembeli").append("<tr>"+
 					"<td class=''>"+value.namaPT+"</td>"+
 					"<td class=''>"+value.kontak+"</td>"+
 					"<td class=''>"+value.alamat+"</td>"+
-					"<td class='last'><button id='"+value.idsupplier+"' class='btn btn-success' onclick='selectedProduk("+value.idsupplier+")'><i class='fa fa-plus'></i> </td>"+
+					"<td class='last'><button id='"+value.idsupplier+"' class='btn btn-success' onclick='selectedPembeli("+value.idsupplier+")'><i class='fa fa-plus'></i> </td>"+
 					"</tr>");
 				});
 			}
@@ -249,30 +251,64 @@ $(function(){
 			$("#modal_body_pembeli").modal('show');
 	});
 
-	$(".produkClickBtn").click(function(){
+	$(".pembeliClickBtn").click(function(){
 		var t = $('.produkClickBtn').attr('id');
 		alert(t);
 	});
 });
 //end modal pembeli
 
+//button pembeli
+function selectedPembeli(id){
+	//alert(id);
+	$.ajax({
+			type: "GET",
+			dataType:"JSON",
+			url: "<?php echo base_url('ajax/getSelectedCustomer/') ?>" + id, 
+			success: function(obj){
+				$.each( obj, function( key, value ) {
+					console.log(value);
+					$("#namaPembeli").val(value.namaPT);
+					$("#noTlp").val(value.kontak);
+					$("#alamat").val(value.alamat);
+				});
+			}
+			});
+
+	//alert("asdasdsad");
+
+	$("#modal_pembeli").modal('hide');
+
+}
+//end
+
 function selectedProduk(id){
 	$.ajax({
 			type: "GET",
 			dataType:"JSON",
-			url: "<?php echo base_url('ajax/getSelectedProduk') ?>",
+			url: "<?php echo base_url('ajax/getSelectedProduk/') ?>" + id,
 			success: function(obj){
 				$.each( obj, function( key, value ) {
 					console.log(value);
-					$("#modal_body").append("<tr>"+
+					$("#tablebawah").append("<tr>"+
+					"<td class='idtable'>"+value.idproduk+"</td>"+
 					"<td class=''>"+value.namaproduk+"</td>"+
 					"<td class=''>"+value.produkkatname+"</td>"+
 					"<td class=''>"+value.harga+"</td>"+
-					"<td class='last'><button id='"+value.idproduk+"' class='btn btn-success' onclick='selectedProduk("+value.idproduk+")'><i class='fa fa-plus'></i> </td>"+
+					// "<td class='last'><button id='"+value.idproduk+"' class='btn btn-success' onclick='selectedProduk("+value.idproduk+")'><i class='fa fa-plus'></i> </td>"+
+					"<td class=''><input type='number'></input></td>"+
+					"<td class=''></td>"+
 					"</tr>");
+					// if (value.idproduk = idtable){
+					// 	alert("adasdasdsa");
+					// 	return;
+					// }
+					
 				});
 			}
 			});
+
+	$("#modal_produk").modal('hide');
 }
 </script>
 
