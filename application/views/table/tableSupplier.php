@@ -21,19 +21,20 @@
                         </div>
                     </div>
                     <div class="clearfix"></div>
-                    <?php if($this->session->flashdata('success')){ ?>
-<div class="alert alert-success alert-dismissible fade in" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-    </button>
-    <strong>Success</strong> <?php echo $this->session->flashdata('success') ?>
-</div>
+
+<?php if($this->session->flashdata('success')){ ?>
+    <div class="alert alert-success alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+        </button>
+        <strong>Success</strong> <?php echo $this->session->flashdata('success') ?>
+    </div>
 	
 <?php } if($this->session->flashdata('error')){ ?>
 	<div class="alert alert-danger alert-dismissible fade in" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
         </button>
         <strong>Error</strong> <?php echo $this->session->flashdata('error') ?>
-     </div>
+    </div>
 <?php } ?>
                     <div class="row">
 
@@ -65,10 +66,10 @@
                                                 <!-- <th>
                                                     <input type="checkbox" class="tableflat">
                                                 </th> -->
-                                                <th>Nama Produk </th>
+                                                <th>Nama </th>
                                                 <th>Kategori </th>
-                                                <th>Stok </th>
-                                                <th>Harga </th>
+                                                <th>Email </th>
+                                                <th>Kontak </th>
                                                 <th>Status </th>
                                                 <th class=" no-link last" style="width:150px"><span class="nobr">Action</span>
                                                 </th>
@@ -83,8 +84,8 @@
                                                 </td> -->
                                                 <td class=" "><?php echo $row['namaPT'] ?></td>
                                                 <td class=" "><?php echo $row['suppliertypename'] ?></td>
-                                                <td class=" "><?php echo $row['email'] ?> pcs</td>
-                                                <td class=" ">IDR <?php echo $row['kontak'] ?></td>
+                                                <td class=" "><?php echo $row['email'] ?></td>
+                                                <td class=" "><?php echo $row['kontak'] ?></td>
                                                 <td class="a-right a-right "><?php echo $row['statusname'] ?></td>
                                                 <td class=" last">
                                                     <a href="<?php echo base_url('supplier/edit/'.$row['idsupplier'].'') ?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>

@@ -39,10 +39,10 @@
 				<div class="x_content">
 
 					<!-- start form for validation -->
-					<form id="demo-form" action="<?php echo base_url('admin/saveEmployee') ?>" method="post">
+					<form id="demo-form" action="<?php echo base_url('employee/save') ?>" method="post">
 						<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 							<input type="text" class="form-control has-feedback-left"
-								id="aaaaa" placeholder="Fullname" name="nama"> <span
+								id="aaaaa" placeholder="Fullname" name="nama" required="required"> <span
 								class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
 						</div>
 
@@ -110,7 +110,7 @@
 						</div>
 
 						<div class="clearfix"></div>
-						<br /> <button class="btn btn-primary">Save</button>
+						<br /> <button class="btn btn-primary" type="submit">Save</button>
 
 					</form>
 					<!-- end form for validations -->

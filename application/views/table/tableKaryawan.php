@@ -22,6 +22,22 @@
                     </div>
                     <div class="clearfix"></div>
 
+<?php if($this->session->flashdata('success')){ ?>
+    <div class="alert alert-success alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+        </button>
+        <strong>Success</strong> <?php echo $this->session->flashdata('success') ?>
+    </div>
+    
+<?php } if($this->session->flashdata('error')){ ?>
+    <div class="alert alert-danger alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+        </button>
+        <strong>Error</strong> <?php echo $this->session->flashdata('error') ?>
+    </div>
+<?php } ?>
+
+
                     <div class="row">
 
                         <div class="col-md-12 col-sm-12 col-xs-12">

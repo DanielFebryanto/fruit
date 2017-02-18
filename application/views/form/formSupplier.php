@@ -55,7 +55,7 @@
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="first-name">Supplier Name <span class="required">*</span>
+								for="first-name">Name Supplier  <span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input type="text" id="first-name" required="required" name="nama"
@@ -64,7 +64,7 @@
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								for="last-name">Supplier Email <span class="required">*</span>
+								for="last-name">Email Supplier  <span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input type="text" id="last-name" name="email"
@@ -73,8 +73,8 @@
 						</div>
 						<div class="form-group">
 							<label for="middle-name"
-								class="control-label col-md-3 col-sm-3 col-xs-12">Supplier
-								Contact</label>
+								class="control-label col-md-3 col-sm-3 col-xs-12">Contact Supplier
+								</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<input id="middle-name" class="form-control col-md-7 col-xs-12"
 									type="text" name="kontak">
@@ -92,7 +92,7 @@
 						<div class="ln_solid"></div>
 						<div class="form-group">
 							<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-								<a class="btn btn-primary" href="<?php echo base_url('supplier/save')?>">Back</a>
+								<!-- <a class="btn btn-primary" href="<?php echo base_url('supplier/save')?>">Back</a> -->
 								<button type="submit" id="supplierSubmit" class="btn btn-success">Save</button>
 							</div>
 						</div>

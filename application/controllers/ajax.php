@@ -16,9 +16,9 @@ class Ajax extends CI_Controller {
 	function getProduk(){
 		$this->load->model('produkModel');
 		$clause = array(
-			'produk.idstatus'=>11110
-		);
-		$data['produk'] = $this->produkModel->getAll();
+            'produk.idstatus'=>11118
+        );
+		$data['produk'] = $this->produkModel->getByClause($clause);
 		
 		foreach($data['produk']->result_array() as $row){
 		$ee[] =$row;
@@ -41,8 +41,16 @@ class Ajax extends CI_Controller {
 	function getCustomer(){
 		$this->load->model('supplierModel');
 		$clause = array(
-			'produk.idstatus'=>11110
+			'supplier.idsuppliertype'=>112
 		);
+
+		$data['supplier'] = $this->supplierModel->getByClause($clause);
+
+		foreach ($data['supplier']->result_array() as $row) {
+			$supp[] = $row;
+		}
+
+		echo json_encode($supp);
 	}
 
 	function getSelectedCustomer($id){
