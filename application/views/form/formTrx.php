@@ -95,8 +95,8 @@
                                                 <!-- <th>Id</th> -->
                                                 <th>Nama Produk</th>
                                                 <th>Kategori</th>
-                                                <th>Harga</th>
-                                                <th>Qty</th>
+                                                <th>Harga/100gram</th>
+                                                <th>Qty(gram)</th>
                                                 <th>SubTotal</th>
                                             </tr>
                                         </thead>
