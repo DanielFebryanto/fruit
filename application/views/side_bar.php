@@ -31,35 +31,35 @@
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="index.html">Dashboard</a>
                                         </li>
-                                        <li><a href="index2.html">Dashboard2</a>
+                                      <!--   <li><a href="index2.html">Dashboard2</a>
                                         </li>
                                         <li><a href="index3.html">Dashboard3</a>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </li>
                                 <li><a><i class="fa fa-edit"></i> Supplier<span class="fa fa-chevron-down"></span> </a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="<?php echo base_url() ?>supplier/create">Create New</a>
                                         </li>
-                                        <li><a href="<?php echo base_url() ?>supplier/pemasok">Pemasok</a>
+                                        <li><a href="<?php echo base_url() ?>supplier/pemasok">List Pemasok</a>
                                         </li>
-                                        <li><a href="<?php echo base_url() ?>supplier/pembeli">Pembeli</a>
+                                        <li><a href="<?php echo base_url() ?>supplier/pembeli">List Pembeli</a>
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-user"></i> Employee <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-user"></i> Karyawan <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         
-                                        <li><a href="<?php echo base_url() ?>employee/create">Create New Employee</a>
+                                        <li><a href="<?php echo base_url() ?>employee/create">Buat Karyawan Baru</a>
                                         </li>
-                                        <li><a href="<?php echo base_url() ?>employee">List Of Employee</a>
+                                        <li><a href="<?php echo base_url() ?>employee">List Karyawan</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li><a><i class="fa fa-user"></i> Produk <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         
-                                        <li><a href="<?php echo base_url() ?>produk/create">Create New Produk</a>
+                                        <li><a href="<?php echo base_url() ?>produk/create">Buat Produk Baru</a>
                                         </li>
                                         <li><a href="<?php echo base_url() ?>produk">Daftar Produk</a>
                                         </li>
@@ -69,7 +69,7 @@
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="<?php echo base_url() ?>trx/create"> Create New</a>
                                         </li>
-                                        <li><a href="<?php echo base_url() ?>trx/purchaseRequest"> Purchase Request</a>
+                                        <li><a href="<?php echo base_url() ?>trx/purchaseRequest"> Daftar Penjualan</a>
                                         </li>
                                         <li><a href="<?php echo base_url() ?>trx/preDeliveryOrder"> Pre Delivery Order</a>
                                         </li>
@@ -82,7 +82,7 @@
                         <div class="menu_section">
                             <h3>Payment</h3>
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-bug"></i> Kelola Pembayaran <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-bug"></i> Laporan <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="e_commerce.html"> Buat Faktur Pembayaran</a>
                                         </li>
