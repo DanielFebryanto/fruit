@@ -65,4 +65,27 @@ class Ajax extends CI_Controller {
 		}
 		echo json_encode($asa);
 	}
+
+	function saveTrxHeader(){
+		$this->load->model('supplierModel');
+
+	    $name = $_POST['name'];
+	    $tanggalkirim = $_POST['tangskir'];
+	    $notlp = $_POST['notlp'];
+	    $alamat = $_POST['alamat'];
+
+	    $idproduct = $_POST['idprod'];
+	    echo $name, $tanggalkirim, $notlp, $alamat, $idproduct;
+
+		// $value = array (
+		// 	'nama' => $_POST['name'],
+		// 	'tangkir' => $_POST['tangskir'],
+		// 	// 'notlp' => $_POST['notlp'],
+		// 	// 'alamat' => $_POST['alamat'],
+		// );
+
+		// echo $value;
+
+		
+	}
 }

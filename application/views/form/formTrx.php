@@ -1,4 +1,6 @@
 
+<div id="result"></div>
+
 <div class="">
 
                     <?php $this->load->view('search')?>
@@ -29,12 +31,12 @@
 
 				<div class="x_content" style="margin-top: -20px">
 					<br />
-					<form id="demo-form2" data-parsley-validate
+					<form id="formPembeli" data-parsley-validate 
 						class="form-horizontal form-label-left">
 						<div class="form-group">
 							<div class="col-md-6 col-sm-6 col-xs-12" style="padding-left: 0px">
-								<button type="submit" class="btn btn-primary">Cancel</button>
-								<button type="submit" class="btn btn-success">Save</button>
+								<button class="btn btn-primary">Cancel</button>
+								<button id="submit" type="submit" class="btn btn-success">Save</button>
 							</div>
 						</div>
 						<div class="clearfix"></div>
@@ -43,18 +45,18 @@
 							<label class="control-label col-md-2 col-sm-3 col-xs-12" style="text-align: left;"
 								for="first-name">Pilih Pembeli<span class="required">*</span>
 							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<button type="button" class="pembeliBtn btn btn-primary" data-toggle="modal"><i class="fa fa-plus"></i> Pembeli</button>
-								<input type="text" id="namaPembeli" name="last-name" value="Nama Pembeli" 
-									required="required" disabled="disabled" class="form-control col-md-7 col-xs-12">
-							</div>
+						<div class="col-md-6 col-sm-6 col-xs-12 form-group">
+							<button type="button" class="pembeliBtn btn btn-primary" data-toggle="modal"><i class="fa fa-plus"></i> Pembeli</button>
+							<input type="text" id="namaPembeli" name="namapembeli" 
+								required="required" class="form-control col-md-7 col-xs-12" readonly="true">
+						</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-2 col-sm-3 col-xs-12" style="text-align: left;"
 								for="last-name">Tanggal Kirim <span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" id="tglkirim" name="last-name"
+								<input type="text" id="tglkirim" name="tglkirim"
 									required="required" class="date-picker form-control col-md-7 col-xs-12">
 							</div>
 						</div>
@@ -63,7 +65,7 @@
 								for="last-name">No Tlp <span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" id="noTlp" name="last-name" id="noTlp" 
+								<input type="text" id="noTlp" name="notlp" id="noTlp" 
 									required="required" class="form-control col-md-7 col-xs-12">
 							</div>
 						</div>
@@ -72,14 +74,15 @@
 								class="control-label col-md-2 col-sm-3 col-xs-12" style="text-align: left;">Alamat</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<textarea id="alamat" class="form-control col-md-7 col-xs-12"
-									type="text" name="middle-name"></textarea>
+									type="text" name="alamat"></textarea>
 							</div>
 						</div>
+				</form>
 						
 						<hr>
 
 <button type="button" class="produkBtn btn btn-primary" data-toggle="modal"><i class="fa fa-plus"></i> Produk</button>
-						 <table class="table table-striped responsive-utilities jambo_table bulk_action">
+						 <table id="tableTransaksi" class="table table-striped responsive-utilities jambo_table bulk_action">
                                         <thead>
                                             <tr class="headings">
                                                 <!-- <th>#</th> -->
@@ -114,11 +117,13 @@
 								<button type="submit" class="btn btn-success">Submit</button>
 							</div>
 						</div> -->
-					</form>	
+					<!-- </form>	 -->
 				</div>
 			</div>
 		</div>
 	</div>
+
+
 
 
 	<!-- modal pembeli -->
@@ -196,6 +201,8 @@
     </div>
 
     <!-- end of modal product -->
+
+    
 
 </div>
 <script>
@@ -289,20 +296,32 @@ function selectedProduk(id){
 			url: "<?php echo base_url('ajax/getSelectedProduk/') ?>" + id,
 			success: function(obj){
 				$.each( obj, function( key, value ) {
-					console.log(value);
+					//console.log(value);
 					$("#tablebawah").append("<tr>"+
 					"<td class='idtable'>"+value.idproduk+"</td>"+
-					"<td class=''>"+value.namaproduk+"</td>"+
-					"<td class=''>"+value.produkkatname+"</td>"+
-					"<td class=''>"+value.harga+"</td>"+
+					"<td class='namaproduk'>"+value.namaproduk+"</td>"+
+					"<td class='productname'>"+value.produkkatname+"</td>"+
+					"<td class='harga' id='harga'>"+value.harga+"</td>"+
 					// "<td class='last'><button id='"+value.idproduk+"' class='btn btn-success' onclick='selectedProduk("+value.idproduk+")'><i class='fa fa-plus'></i> </td>"+
-					"<td class=''><input type='number'></input></td>"+
-					"<td class=''></td>"+
+					"<td class='qty'><input id='sum' type='number'></input></td>"+
+					"<td class='total'><input id='total' type='number' disabled='disabled' value='0'></input></td>"+
 					"</tr>");
 					// if (value.idproduk = idtable){
 					// 	alert("adasdasdsa");
 					// 	return;
 					// }
+
+					$("#sum").change(function(){
+
+
+						var harga = value.harga;
+						var qty = $('#sum').val();
+
+						$('#total').val(harga * qty);
+						
+					});
+
+
 					
 				});
 			}
@@ -310,6 +329,41 @@ function selectedProduk(id){
 
 	$("#modal_produk").modal('hide');
 }
+</script>
+
+<script type="text/javascript">
+
+	$("#submit").click (function(){
+
+		//get form value for header
+		var namaPem = $("#namaPembeli").val();
+		var tangKir = $("#tglkirim").val();
+		var noTelp	= $("#noTlp").val();
+		var alamats	= $("#alamat").val();
+
+		//get table value for detail
+		// $("#tableTransaksi").each(function(){
+		// 	var idProduct = document.getElementByClass("idtable").rows[1].cells[0].innerHTML;
+		// });
+		
+		alert(idProduct);
+
+
+		//var value = $("#formPembeli").serializeArray();
+		$.post("<?php echo base_url('ajax/saveTrxHeader') ?>",
+			{
+				name: namaPem,
+				tangskir: tangKir,
+				notlp: noTelp,
+				alamat: alamats,
+				idprod: idProduct
+			},
+			function(data, status){
+        	alert("Data: " + data + "\nStatus: " + status);
+    	});
+
+
+	});
 </script>
 
 <script type="text/javascript">
@@ -323,6 +377,7 @@ function selectedProduk(id){
         });
     });
 </script>
+
 
 <script type="text/javascript">
 	$('.pembeliBtn').click(function(){

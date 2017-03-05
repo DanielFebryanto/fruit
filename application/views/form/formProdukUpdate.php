@@ -45,7 +45,7 @@
                         <?php foreach ($produk->result_array() as $row) {?>
 						<div class="form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12"
-								Kategori Produk <span class="required">*</span>
+								Kategori Produk <span class="required">Kategori Produk </span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<select name="produkKat" required="required"
