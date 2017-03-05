@@ -31,8 +31,6 @@
 
 				<div class="x_content" style="margin-top: -20px">
 					<br />
-					<form id="formPembeli" data-parsley-validate 
-						class="form-horizontal form-label-left">
 						<div class="form-group">
 							<div class="col-md-6 col-sm-6 col-xs-12" style="padding-left: 0px">
 								<button class="btn btn-primary">Cancel</button>
@@ -50,6 +48,15 @@
 							<input type="text" id="namaPembeli" name="namapembeli" 
 								required="required" class="form-control col-md-7 col-xs-12" readonly="true">
 						</div>
+						</div>
+						<div class="form-group" style="display: none">
+							<label class="control-label col-md-2 col-sm-3 col-xs-12" style="text-align: left;"
+								for="last-name">Id Pembeli <span class="required">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input type="text" id="idPembeli" name="idPembeli"
+									required="required" class="date-picker form-control col-md-7 col-xs-12">
+							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-2 col-sm-3 col-xs-12" style="text-align: left;"
@@ -77,7 +84,6 @@
 									type="text" name="alamat"></textarea>
 							</div>
 						</div>
-				</form>
 						
 						<hr>
 
@@ -86,7 +92,7 @@
                                         <thead>
                                             <tr class="headings">
                                                 <!-- <th>#</th> -->
-                                                <th>Id</th>
+                                                <!-- <th>Id</th> -->
                                                 <th>Nama Produk</th>
                                                 <th>Kategori</th>
                                                 <th>Harga</th>
@@ -275,6 +281,7 @@ function selectedPembeli(id){
 			success: function(obj){
 				$.each( obj, function( key, value ) {
 					console.log(value);
+					$("#idPembeli").val(value.idsupplier);
 					$("#namaPembeli").val(value.namaPT);
 					$("#noTlp").val(value.kontak);
 					$("#alamat").val(value.alamat);
@@ -290,39 +297,38 @@ function selectedPembeli(id){
 //end
 
 function selectedProduk(id){
+	var getLength = $("#tablebawah > tr").length;
+	//alert(getLength);
 	$.ajax({
 			type: "GET",
 			dataType:"JSON",
 			url: "<?php echo base_url('ajax/getSelectedProduk/') ?>" + id,
 			success: function(obj){
 				$.each( obj, function( key, value ) {
+
 					//console.log(value);
 					$("#tablebawah").append("<tr>"+
-					"<td class='idtable'>"+value.idproduk+"</td>"+
+					"<td class='idtable' style='display:none'><input id='idprod_"+getLength+"' type='number' value='"+value.idproduk+"'></input></td>"+
 					"<td class='namaproduk'>"+value.namaproduk+"</td>"+
 					"<td class='productname'>"+value.produkkatname+"</td>"+
-					"<td class='harga' id='harga'>"+value.harga+"</td>"+
+					"<td class='harga' id='harga_"+getLength+"'>"+value.harga+"</td>"+
 					// "<td class='last'><button id='"+value.idproduk+"' class='btn btn-success' onclick='selectedProduk("+value.idproduk+")'><i class='fa fa-plus'></i> </td>"+
-					"<td class='qty'><input id='sum' type='number'></input></td>"+
-					"<td class='total'><input id='total' type='number' disabled='disabled' value='0'></input></td>"+
+					"<td class='' style='display:none'><input id='price_"+getLength+"' type='number' value='"+value.harga+"'></input></td>"+
+					"<td class='qty'><input class='sum' id='qty_"+getLength+"' data-row='"+getLength+"' type='number'></input></td>"+
+					"<td class='total'><input id='total_"+getLength+"' type='number' disabled='disabled' value='0'></input></td>"+
 					"</tr>");
 					// if (value.idproduk = idtable){
 					// 	alert("adasdasdsa");
 					// 	return;
 					// }
 
-					$("#sum").change(function(){
-
-
-						var harga = value.harga;
-						var qty = $('#sum').val();
-
-						$('#total').val(harga * qty);
-						
+					$(".sum").change(function(){
+						//alert("adsasdsadsa");
+						var count = $(this).attr('data-row');
+						var harga = $("#price_"+count).val();
+						var qty = $(this).val();
+						$("#total_"+count).val(harga*qty);
 					});
-
-
-					
 				});
 			}
 			});
@@ -333,30 +339,46 @@ function selectedProduk(id){
 
 <script type="text/javascript">
 
-	$("#submit").click (function(){
 
+
+	$("#submit").click (function(){
+		var getLength = $("#tablebawah > tr").length;
+		for(i = 0; i< getLength; i++){
+			var idProduct = $("#idprod_"+i).val();
+			var qtyp = $("#qty_"+i).val();
+			var harga = $("#price_"+i).val();
+			//var harga = Number($("#harga_"+i).text);
+			//var t = $("#price_"+i).val();
+			//console.log("harga : ", idProduct, qtyp, harga);
+		}
 		//get form value for header
+		var idPembeli = $("#idPembeli").val();
 		var namaPem = $("#namaPembeli").val();
 		var tangKir = $("#tglkirim").val();
 		var noTelp	= $("#noTlp").val();
 		var alamats	= $("#alamat").val();
 
-		//get table value for detail
-		// $("#tableTransaksi").each(function(){
-		// 	var idProduct = document.getElementByClass("idtable").rows[1].cells[0].innerHTML;
-		// });
-		
-		alert(idProduct);
-
-
-		//var value = $("#formPembeli").serializeArray();
+	
 		$.post("<?php echo base_url('ajax/saveTrxHeader') ?>",
 			{
+				idpem: idPembeli,
 				name: namaPem,
 				tangskir: tangKir,
 				notlp: noTelp,
-				alamat: alamats,
-				idprod: idProduct
+				alamat: alamats
+			},
+			function(data, status){
+        	alert("Data: " + data + "\nStatus: " + status);
+    	});
+
+
+    	$.post("<?php echo base_url('ajax/saveTrxDetail') ?>",
+			{
+				idpem: idPembeli,
+				name: namaPem,
+				tangskir: tangKir,
+				notlp: noTelp,
+				alamat: alamats
 			},
 			function(data, status){
         	alert("Data: " + data + "\nStatus: " + status);
