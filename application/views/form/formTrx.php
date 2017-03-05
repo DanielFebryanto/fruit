@@ -347,8 +347,6 @@ function selectedProduk(id){
 			var idProduct = $("#idprod_"+i).val();
 			var qtyp = $("#qty_"+i).val();
 			var harga = $("#price_"+i).val();
-			//var harga = Number($("#harga_"+i).text);
-			//var t = $("#price_"+i).val();
 			//console.log("harga : ", idProduct, qtyp, harga);
 		}
 		//get form value for header
@@ -374,11 +372,7 @@ function selectedProduk(id){
 
     	$.post("<?php echo base_url('ajax/saveTrxDetail') ?>",
 			{
-				idpem: idPembeli,
-				name: namaPem,
-				tangskir: tangKir,
-				notlp: noTelp,
-				alamat: alamats
+				
 			},
 			function(data, status){
         	alert("Data: " + data + "\nStatus: " + status);

@@ -69,7 +69,9 @@ class Ajax extends CI_Controller {
 	function saveTrxHeader(){
 		$this->load->model('supplierModel');
 
-
+		$value = array(
+			''
+		);
 		$idpem = $_POST['idpem'];
 	    //$name = $_POST['name'];
 	    $tanggalkirim = $_POST['tangskir'];
@@ -88,5 +90,10 @@ class Ajax extends CI_Controller {
 		// echo $value;
 
 		
+	}
+
+
+	function tes(){
+		echo(md5(uniqid(rand(), false)));
 	}
 }
