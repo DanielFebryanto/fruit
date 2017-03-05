@@ -83,7 +83,7 @@
                                                 </td> -->
                                                 <td class=" "><?php echo $row['namaproduk'] ?></td>
                                                 <td class=" "><?php echo $row['produkkatname'] ?></td>
-                                                <td class=" "><?php echo $row['stok'] ?> Kg</td>
+                                                <td class=" "><?php echo $row['stok'] ?> gram</td>
                                                 <td class=" ">IDR <?php echo $row['harga'] ?></td>
                                                 <td class="a-right a-right "><?php echo $row['statusname'] ?></td>
                                                 <td class=" last">
