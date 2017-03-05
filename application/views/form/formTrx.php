@@ -327,7 +327,7 @@ function selectedProduk(id){
 						var count = $(this).attr('data-row');
 						var harga = $("#price_"+count).val();
 						var qty = $(this).val();
-						$("#total_"+count).val(harga*qty);
+						$("#total_"+count).val(harga*qty/100); 
 					});
 				});
 			}

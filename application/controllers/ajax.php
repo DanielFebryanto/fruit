@@ -94,6 +94,6 @@ class Ajax extends CI_Controller {
 
 
 	function tes(){
-		echo(md5(uniqid(rand(), false)));
+		echo(md5(uniqid(rand(), true)));
 	}
 }
