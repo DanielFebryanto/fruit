@@ -71,8 +71,8 @@
                                         </li>
                                         <li><a href="<?php echo base_url() ?>trx/purchaseRequest"> Daftar Penjualan</a>
                                         </li>
-                                        <li><a href="<?php echo base_url() ?>trx/preDeliveryOrder"> Pre Delivery Order</a>
-                                        </li>
+                                        <!-- <li><a href="<?php echo base_url() ?>trx/preDeliveryOrder"> Pre Delivery Order</a>
+                                        </li> -->
                                         <li><a href="<?php echo base_url() ?>trx/deliveryOrder"> Delivery Order</a>
                                         </li>
                                     </ul>

@@ -2,9 +2,9 @@
 <div class="page-title">
 <div class="title_left">
 <h3>
-<?php echo "Title" ?>
+<?php echo $title ?>
                     <small>
-                        <?php echo "Conter	" ?>
+                        <?php echo "" ?>
                     </small>
                 </h3>
                         </div>
@@ -40,7 +40,6 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Daily active users <small>Sessions</small></h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a href="#"><i class="fa fa-chevron-up"></i></a>
                                         </li>
@@ -59,42 +58,32 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <table id="example" class="table table-striped responsive-utilities jambo_table">
+                                    <table class="table table-striped">
                                         <thead>
                                             <tr class="headings">
-                                                <!-- <th>
-                                                    <input type="checkbox" class="tableflat">
-                                                </th> -->
-                                                <th>Nama Pembeli </th>
-                                                <th>Kategori </th>
-                                                <th>Stok </th>
-                                                <th>Harga </th>
-                                                <th>Status </th>
-                                                <th class=" no-link last" style="width:150px"><span class="nobr">Action</span>
-                                                </th>
+                                                <!-- <th>#</th> -->
+                                                <!-- <th>Id</th> -->
+                                                <th>Nama Produk</th>
+                                                <th>Kategori</th>
+                                                <th>Qty</th>
+                                                <th>Retur</th>
                                             </tr>
                                         </thead>
-
                                         <tbody>
-                                            <?php foreach ($getPurchaseRequest->result_array() as $row) {?>
-                                            <tr class="even pointer">
-                                                <!-- <td class="a-center ">
-                                                    <input type="checkbox" class="tableflat">
-                                                </td> -->
-                                                <td class=" "><?php echo $row['namaPT'] ?></td>
-                                                <td class=" "><?php echo $row['suppliertypename'] ?></td>
-                                                <td class=" "><?php echo $row['email'] ?> pcs</td>
-                                                <td class=" ">IDR <?php echo $row['kontak'] ?></td>
-                                                <td class="a-right a-right "><?php echo $row['statusname'] ?></td>
-                                                <td class=" last">
-                                                    <a href="<?php echo base_url('retur/create/'.$row['idtrxheader'].'') ?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                                                    <a href="<?php echo base_url('supplier/delete/'.$row['idsupplier'].'/'.$row['suppliertypename'].'') ?>" class="btn btn-danger" ><i class="fa fa-trash"></i></a>
-                                                </td>
+                                        <?php 
+                                        $ind = 0;
+                                        foreach ($Detail->result_array() as $row) {
+                                        ?> 
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td><?php echo $row['namaproduk'] ?></td>
+                                                <td><?php echo $row['qty'] ?></td>
+                                                <td><input type="text" name="returQty_<?php echo $ind ?>" </td>
                                             </tr>
-                                            <?php } ?>
+                                          <?php $ind++; } ?>
                                         </tbody>
-
                                     </table>
+                                   
                                 </div>
                             </div>
                         </div>

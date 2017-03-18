@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class TrxReturrModel extends CI_Model {
+class TrxReturModel extends CI_Model {
 	function save($value){
 		$this->db->trans_begin();
 		
