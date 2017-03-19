@@ -55,7 +55,11 @@ class TrxHeaderModel extends CI_Model {
 
 	function getByClause($clause){
 		$this->db->select('*');
+<<<<<<< HEAD
 		// $this->db->join('trxdetail', 'trxdetail.idtrxheader = trxheader.idtrxheader');
+=======
+		//$this->db->join('trxdetail', 'trxdetail.idtrxheader = trxheader.idtrxheader');
+>>>>>>> 1d58212c609247a147396ba8d7f0b116c810f4c3
 		$this->db->join('status', 'status.idstatus = trxheader.idstatus');
 		$this->db->join('supplier', 'supplier.idsupplier = trxheader.idsupplier');
 		$this->db->join('suppliertype', 'suppliertype.idsuppliertype = supplier.idsuppliertype');
