@@ -49,7 +49,8 @@
 								required="required" class="form-control col-md-7 col-xs-12" readonly="true">
 						</div>
 						</div>
-						<div class="form-group" style="display: none">
+						<div class="clearfix"></div>
+						<div style="display: none">
 							<label class="control-label col-md-2 col-sm-3 col-xs-12" style="text-align: left;"
 								for="last-name">Id Pembeli <span class="required">*</span>
 							</label>
@@ -58,6 +59,7 @@
 									required="required" class="date-picker form-control col-md-7 col-xs-12">
 							</div>
 						</div>
+						<div class="clearfix"></div>
 						<div class="form-group">
 							<label class="control-label col-md-2 col-sm-3 col-xs-12" style="text-align: left;"
 								for="last-name">Tanggal Kirim <span class="required">*</span>
@@ -67,7 +69,8 @@
 									required="required" class="date-picker form-control col-md-7 col-xs-12">
 							</div>
 						</div>
-						<div class="form-group">
+						<div class="clearfix"></div>
+						<div class="form-group" style="margin-top: 10px">
 							<label class="control-label col-md-2 col-sm-3 col-xs-12" style="text-align: left;"
 								for="last-name">No Tlp <span class="required">*</span>
 							</label>
@@ -76,7 +79,8 @@
 									required="required" class="form-control col-md-7 col-xs-12">
 							</div>
 						</div>
-						<div class="form-group">
+						<div class="clearfix"></div>
+						<div class="form-group" style="margin-top: 10px">
 							<label for="middle-name"
 								class="control-label col-md-2 col-sm-3 col-xs-12" style="text-align: left;">Alamat</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
@@ -86,6 +90,8 @@
 						</div>
 						
 						<hr>
+
+	<div class="clearfix"></div>
 
 <button type="button" class="produkBtn btn btn-primary" data-toggle="modal"><i class="fa fa-plus"></i> Produk</button>
 						 <table id="tableTransaksi" class="table table-striped responsive-utilities jambo_table bulk_action">
@@ -342,13 +348,17 @@ function selectedProduk(id){
 
 
 	$("#submit").click (function(){
+		var kirim = [];
 		var getLength = $("#tablebawah > tr").length;
 		for(i = 0; i< getLength; i++){
 			var idProduct = $("#idprod_"+i).val();
 			var qtyp = $("#qty_"+i).val();
 			var harga = $("#price_"+i).val();
-			//console.log("harga : ", idProduct, qtyp, harga);
+
+			var a = {'idProduk':idProduct, 'qtyP': qtyp, 'harga':harga};
+			kirim.push(a);
 		}
+			console.log("harga : ", kirim, qtyp, harga);
 		//get form value for header
 		var idPembeli = $("#idPembeli").val();
 		var namaPem = $("#namaPembeli").val();
@@ -356,27 +366,32 @@ function selectedProduk(id){
 		var noTelp	= $("#noTlp").val();
 		var alamats	= $("#alamat").val();
 
+
+		console.log("tanggal", idPembeli);
 	
 		$.post("<?php echo base_url('ajax/saveTrxHeader') ?>",
 			{
 				idpem: idPembeli,
-				name: namaPem,
+				//name: namaPem,
 				tangskir: tangKir,
-				notlp: noTelp,
-				alamat: alamats
+				detail : kirim
+				//notlp: noTelp,
+				//alamat: alamats
 			},
 			function(data, status){
         	alert("Data: " + data + "\nStatus: " + status);
     	});
 
 
-    	$.post("<?php echo base_url('ajax/saveTrxDetail') ?>",
-			{
-				
-			},
-			function(data, status){
-        	alert("Data: " + data + "\nStatus: " + status);
-    	});
+   //  	$.post("<?php echo base_url('ajax/saveTrxHeader') ?>",
+			// {
+			// 	idprod: idProduct,
+			// 	qty: qtyp,
+			// 	harga: harga
+			// },
+			// function(data, status){
+   //      	alert("Data: " + data + "\nStatus: " + status);
+   //  	});
 
 
 	});
@@ -386,7 +401,7 @@ function selectedProduk(id){
 	$(document).ready(function () {
         $('#tglkirim').daterangepicker({
             singleDatePicker: true,
-            calender_style: "picker_4",
+            calender_style: "picker_5",
             chooseYear:true
         }, function (start, end, label) {
             console.log(start.toISOString(), end.toISOString(), label);

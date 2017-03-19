@@ -59,16 +59,19 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <table id="example" class="table table-striped responsive-utilities jambo_table">
+                                    <table id="example" class="table table-striped responsive-utilities jambo_table bulk_action">
                                         <thead>
                                             <tr class="headings">
                                                 <!-- <th>
                                                     <input type="checkbox" class="tableflat">
                                                 </th> -->
+                                                <th>
+                                                    <input type="checkbox" id="check-all" class="flat">
+                                                </th>
                                                 <th>Nama Pembeli </th>
                                                 <th>Kategori </th>
-                                                <th>Stok </th>
-                                                <th>Harga </th>
+                                                <th>Tgl Transaksi </th>
+                                                <th>Kontak </th>
                                                 <th>Status </th>
                                                 <th class=" no-link last" style="width:150px"><span class="nobr">Action</span>
                                                 </th>
@@ -81,10 +84,11 @@
                                                 <!-- <td class="a-center ">
                                                     <input type="checkbox" class="tableflat">
                                                 </td> -->
+                                                <td class="a-center "><input type="checkbox" class="flat" name="table_records" ></td>
                                                 <td class=" "><?php echo $row['namaPT'] ?></td>
                                                 <td class=" "><?php echo $row['suppliertypename'] ?></td>
-                                                <td class=" "><?php echo $row['email'] ?> pcs</td>
-                                                <td class=" ">IDR <?php echo $row['kontak'] ?></td>
+                                                <td class=" "><?php echo $row['tgltrx'] ?></td>
+                                                <td class=" "><?php echo $row['kontak'] ?></td>
                                                 <td class="a-right a-right "><?php echo $row['statusname'] ?></td>
                                                 <td class=" last">
                                                     <a href="<?php echo base_url('supplier/edit/'.$row['idsupplier'].'') ?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>

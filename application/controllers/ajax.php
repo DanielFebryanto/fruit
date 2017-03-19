@@ -67,33 +67,40 @@ class Ajax extends CI_Controller {
 	}
 
 	function saveTrxHeader(){
-		$this->load->model('supplierModel');
+		$this->load->model('trxHeaderModel');
+		$this->load->model('trxDetailModel');
 
-		$value = array(
-			''
+		// $idpem = $_POST['idpem'];
+  //   	$tanggalkirim = $_POST['tangskir'];
+
+		$uniq = uniqid();
+
+		$value = array (
+			'idtrxheader'=> $uniq,
+			'idsupplier' => $_POST['idpem'],
+			'tgltrx' => date("Y-m-d", strtotime($_POST['tangskir'])),
+			'idtrxtype' => 1,
+			'idstatus' => 11114
 		);
-		$idpem = $_POST['idpem'];
-	    //$name = $_POST['name'];
-	    $tanggalkirim = $_POST['tangskir'];
-	    // $notlp = $_POST['notlp'];
-	    // $alamat = $_POST['alamat'];
+		$insert = $this->trxHeaderModel->save($value);
 
-	    echo $idpem, $tanggalkirim;
+		foreach ($_POST['detail'] as $val) {
+			$detVal = array(
+				'idtrxheader' => $uniq,
+				'idproduk'=>$val['idProduk'],
+				'qty' => $val['qtyP'],
+				'harga' => $val['harga']
+			);
+			$insertDetail = $this->trxDetailModel->save($detVal);
+		}
+		
+		
 
-		// $value = array (
-		// 	'nama' => $_POST['name'],
-		// 	'tangkir' => $_POST['tangskir'],
-		// 	// 'notlp' => $_POST['notlp'],
-		// 	// 'alamat' => $_POST['alamat'],
-		// );
 
-		// echo $value;
 
 		
 	}
 
 
-	function tes(){
-		echo(md5(uniqid(rand(), true)));
-	}
+	
 }
