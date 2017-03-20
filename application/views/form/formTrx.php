@@ -211,6 +211,7 @@
 							<tr class="headings">
 								<th>Nama Produk</th>
 								<th>Kategori</th>
+								<th>Stok</th>
 								<th>Harga</th>
 								<th class=" no-link last"><span class="nobr">Action</span></th>
 							</tr>
@@ -250,6 +251,7 @@ $(function(){
 					$("#modal_body").append("<tr>"+
 					"<td class=''>"+value.namaproduk+"</td>"+
 					"<td class=''>"+value.produkkatname+"</td>"+
+					"<td class=''>"+value.stok+"</td>"+
 					"<td class=''>"+value.harga+"</td>"+
 					"<td class='last'><button id='"+value.idproduk+"' class='btn btn-success' onclick='selectedProduk("+value.idproduk+")'><i class='fa fa-plus'></i> </td>"+
 					"</tr>");

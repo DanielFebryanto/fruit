@@ -10,14 +10,14 @@
                         </div>
                         
                         <div class="title_right">
-                            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                          <!--   <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Search for...">
                                     <span class="input-group-btn">
                             <button class="btn btn-default" type="button">Go!</button>
                         </span>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -37,11 +37,17 @@
 <?php } ?>
                     <div class="row">
                     <?php foreach($header->result_array() as $row){ ?>
-                        <h2><?php echo $row['namaPT'] ?>
+                        <div style="margin-left: 10px">
+                            <h2>Nama : <?php echo $row['namaPT'] ?></h2>
+                            <h2>No PO : <?php echo $row['nopo'] ?></h2>
+                            <h2>Alamat : <?php echo $row['alamat']?></h2>
+                            <h2>kontak : <?php echo $row['kontak']?></h2>
+                            <h2>Email : <?php echo $row['email']?></h2>
+                        </div>
                       <?php  } ?>
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
-                                <div class="x_title">
+                               <!--  <div class="x_title">
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a href="#"><i class="fa fa-chevron-up"></i></a>
                                         </li>
@@ -58,7 +64,7 @@
                                         </li>
                                     </ul>
                                     <div class="clearfix"></div>
-                                </div>
+                                </div> -->
                                 <div class="x_content">
                                     <table id="example" class="table table-striped responsive-utilities jambo_table">
                                         <thead>
