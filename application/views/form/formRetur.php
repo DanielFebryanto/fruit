@@ -76,13 +76,12 @@
                                         foreach ($Detail->result_array() as $row) { 
                                         ?> 
                                             <tr>
-                                                <th scope="row"> <?php echo $ind ?></th>
+                                                <th scope="row"> <?php echo $ind +1; ?></th>
                                                 <td><?php echo $row['namaproduk'] ?></td>
                                                 <td><?php echo $row['qty'] ?></td>
-                                                <td><input class="form-control" require type="text" name="returQty_<?php echo $ind ?>" />
+                                                <td><input class="form-control" style="width:25%" require type="text" name="returQty_<?php echo $ind ?>" />
                                                 
                                                 <input type="hidden" name="idproduk_<?php echo $ind ?>" value="<?php echo $row['idproduk'] ?>" />
-                                                <input type="hidden" name="idretur<?php echo $ind ?>" value="<?php echo $row['idtrxretur'] ?>" />
                                                 </td>
                                             </tr>
                                           <?php $ind++; } ?>

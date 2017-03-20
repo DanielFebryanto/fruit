@@ -58,7 +58,7 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                <form action="<?php echo base_url('retur/save') ?>" method="post" />
+                                <form action="<?php echo base_url('retur/update') ?>" method="post" />
                                     <table class="table table-striped">
                                         <thead>
                                             <tr class="headings">
@@ -66,7 +66,6 @@
                                                 <!-- <th>Id</th> -->
                                                 <th>Nama Produk</th>
                                                 <th>Kategori</th>
-                                                <th>Qty</th>
                                                 <th>Retur</th>
                                             </tr>
                                         </thead>
@@ -76,20 +75,17 @@
                                         foreach ($Detail->result_array() as $row) { 
                                         ?> 
                                             <tr>
-                                                <th scope="row"> <?php echo $ind ?></th>
+                                                <th scope="row"> <?php echo $ind +1; ?></th>
                                                 <td><?php echo $row['namaproduk'] ?></td>
-                                                <td><?php echo $row['qty'] ?></td>
-                                                <td><input class="form-control" require type="text" name="returQty_<?php echo $ind ?>" />
+                                                <td><input class="form-control" require style="width:25%" value="<?php echo $row['qty'] ?>" type="text" name="returQty_<?php echo $ind ?>" />
                                                 
-                                                <input type="hidden" name="idproduk_<?php echo $ind ?>" value="<?php echo $row['idproduk'] ?>" />
-                                                <input type="hidden" name="idretur<?php echo $ind ?>" value="<?php echo $row['idtrxretur'] ?>" />
+                                                <input type="hidden" name="idtrxretur_<?php echo $ind ?>" value="<?php echo $row['idtrxretur'] ?>" />
                                                 </td>
                                             </tr>
                                           <?php $ind++; } ?>
                                         </tbody>
                                     </table>
                                     <input type="hidden" name="size" value="<?php echo $ind ?>"/>
-                                    <input type="hidden" name="header" value="<?php echo $row['idtrxheader'] ?>"/>
                                     <button class="btn btn-success pull-right "> Submit</button>
                                     </form>
                                 </div>
