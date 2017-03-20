@@ -90,13 +90,29 @@ class Trx extends CI_Controller {
 		$this->load->model('trxHeaderModel');
 		$data['title'] = 'table delivery order';
 		$clause = array(
-			'status.idstatus'=> 11119, // disetujui
-			'suppliertype.idsuppliertype'=> 112, //pembeli
+			//'status.idstatus'=> 11119, // disetujui
+			//'suppliertype.idsuppliertype'=> 112, //pembeli
 			'idtrxtype' => 2
 		);
-		$data['getDeliveryOrder'] = $this->trxHeaderModel->getByClause($clause);
+		$data['getDeliveryOrder'] = $this->trxHeaderModel->getByClauseDetail($clause);
 		$this->template->display('table/tableDeliveryOrder',$data);
 	}
+
+	//////////////////////// taBLE dasboard ////////////////////////////////////////////
+
+	function dasboard()
+	{
+		$this->load->model('trxHeaderModel');
+		$data['title'] = 'table purchase request';
+		$clause = array(
+			'status.idstatus'=> 11114, /// tunda/pending
+			'suppliertype.idsuppliertype'=> 112, //pembeli
+			'idtrxtype' => 1
+		);
+		$data['getPurchaseRequest'] = $this->trxHeaderModel->getByClause($clause);
+		$this->template->display('table/tableDashboard',$data);
+	}
+
 
 	
 }

@@ -19,7 +19,7 @@ class TrxHeaderModel extends CI_Model {
 	function edit($clause, $value){
 		$this->db->trans_begin();
 		
-		$this->db->where('trxheader', $clause);
+		$this->db->where('idtrxheader', $clause);
 		
 		$this->db->update('trxheader', $value);
 		
@@ -59,6 +59,26 @@ class TrxHeaderModel extends CI_Model {
 		$this->db->join('supplier', 'supplier.idsupplier = trxheader.idsupplier');
 		$this->db->join('suppliertype', 'suppliertype.idsuppliertype = supplier.idsuppliertype');
 		$this->db->where($clause);
+		$dep = $this->db->get('trxheader');
+		return $dep;
+	}
+
+	function getByClauseDetail($clause){
+		$this->db->select('supplier.namaPT, 
+							trxheader.nopo, 
+							supplier.email,
+							supplier.kontak,
+							SUM(trxdetail.harga) AS total, 
+							status.statusname, 
+							trxheader.idtrxheader,
+							supplier.idsupplier,
+							suppliertype.suppliertypename');
+		$this->db->join('trxdetail', 'trxdetail.idtrxheader = trxheader.idtrxheader');
+		$this->db->join('status', 'status.idstatus = trxheader.idstatus');
+		$this->db->join('supplier', 'supplier.idsupplier = trxheader.idsupplier');
+		$this->db->join('suppliertype', 'suppliertype.idsuppliertype = supplier.idsuppliertype');
+		$this->db->where($clause);
+		$this->db->group_by('trxheader.idtrxheader');
 		$dep = $this->db->get('trxheader');
 		return $dep;
 	}

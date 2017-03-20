@@ -139,10 +139,10 @@
                 });
 
                if(status = "success"){
-                alert("Succsess To Save Data.");
+                alert("Succsess Approve Data.");
                 window.location.href = "<?php echo base_url('trx/purchaseRequest')?>";
                }
-            })
+            });
 
             
 

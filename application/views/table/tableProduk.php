@@ -67,7 +67,7 @@
                                                 </th> -->
                                                 <th>Nama Produk </th>
                                                 <th>Kategori </th>
-                                                <th>Stok </th>
+                                                <th>Stok(gram) </th>
                                                 <th>Harga/100gram </th>
                                                 <th>Status </th>
                                                 <th class=" no-link last" style="width:150px"><span class="nobr">Action</span>
@@ -83,7 +83,7 @@
                                                 </td> -->
                                                 <td class=" "><?php echo $row['namaproduk'] ?></td>
                                                 <td class=" "><?php echo $row['produkkatname'] ?></td>
-                                                <td class=" "><?php echo $row['stok'] ?> gram</td>
+                                                <td class=" "><?php echo $row['stok'] ?></td>
                                                 <td class=" ">IDR <?php echo $row['harga'] ?></td>
                                                 <td class="a-right a-right "><?php echo $row['statusname'] ?></td>
                                                 <td class=" last">

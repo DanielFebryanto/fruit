@@ -36,7 +36,6 @@
      </div>
 <?php } ?>
                     <div class="row">
-
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
@@ -58,18 +57,22 @@
                                     </ul>
                                     <div class="clearfix"></div>
                                 </div>
+
                                 <div class="x_content">
-                                    <table id="example" class="table table-striped responsive-utilities jambo_table">
+                                    <!-- <div><button id="approve" class="btn btn-success">Approve</button></div> -->
+                                    <!-- <div class="Search" style="float: right; margin-bottom: 10px"><input type="text" name="Search"></div> -->
+                                    <table id="example" class="table table-striped responsive-utilities jambo_table bulk_action tabs">
                                         <thead>
                                             <tr class="headings">
                                                 <!-- <th>
                                                     <input type="checkbox" class="tableflat">
                                                 </th> -->
-                                                <th>Nama </th>
+                                               
+                                                <th>Nama Pembeli </th>
                                                 <th>No PO </th>
-                                                <th>Email </th>
+                                                <th>Kategori </th>
+                                                <th>Tgl Transaksi </th>
                                                 <th>Kontak </th>
-                                                <th>Total Bayar</th>
                                                 <th>Status </th>
                                                 <!-- <th class=" no-link last" style="width:150px"><span class="nobr">Action</span> -->
                                                 </th>
@@ -77,16 +80,17 @@
                                         </thead>
 
                                         <tbody>
-                                            <?php foreach ($getDeliveryOrder->result_array() as $row) {?>
-                                            <tr class="even pointer">
+                                            <?php foreach ($getPurchaseRequest->result_array() as $row) {?>
+                                            <tr class="even pointer bawah">
                                                 <!-- <td class="a-center ">
                                                     <input type="checkbox" class="tableflat">
                                                 </td> -->
+                                                <td class="tes" style="display: none;"><input type="text" name="idheader" id="idheader" value="<?php echo $row['idtrxheader'] ?>"></td>
                                                 <td class=" "><?php echo $row['namaPT'] ?></td>
                                                 <td class=" "><?php echo $row['nopo'] ?></td>
-                                                <td class=" "><?php echo $row['email'] ?> pcs</td>
+                                                <td class=" "><?php echo $row['suppliertypename'] ?></td>
+                                                <td class=" "><?php echo $row['tgltrx'] ?></td>
                                                 <td class=" "><?php echo $row['kontak'] ?></td>
-                                                <td class=" "><?php echo $row['total'] ?></td>
                                                 <td class="a-right a-right "><?php echo $row['statusname'] ?></td>
                                                <!--  <td class=" last">
                                                     <a href="<?php echo base_url('retur/create/'.$row['idtrxheader'].'') ?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
@@ -107,3 +111,38 @@
 
                     </div>
                 </div>
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        //alert('asdasdsa');
+        //var getLength = $(".tabs > tr").length;
+        $("#approve").click(function(){
+
+            //var kirim = [];
+            $('.bawah input:checked').each(function() {
+              var id, name;
+              id = $(this).closest('tr').find('#idheader').val();
+              // var idheaderatas = {'idhead':id};
+              // kirim.push(idheaderatas);
+               $.post("<?php echo base_url('ajax/UpdateTrxHeader') ?>",
+                {
+                  idheader: id
+                },
+                function(data, status){
+                //alert("Data: " + data + "\nStatus: " + status);
+                });
+
+               if(status = "success"){
+                alert("Succsess Approve Data.");
+                window.location.href = "<?php echo base_url('trx/purchaseRequest')?>";
+               }
+            });
+
+            
+
+        });
+    });
+</script>
