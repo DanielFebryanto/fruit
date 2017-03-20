@@ -98,41 +98,41 @@ class Admin extends CI_Controller {
 		$this->template->display('form/formSupplier',$data);
 	}
 	
-	function case(){
-		$this->load->model(array('trxHeaderModel', 'trxReturModel', 'trxDetailModel'));
-		$headerVal = array(
-			'idtrxheader'=>'trx1',
-			'idtrxtype'=>771,
-			'idstatus'=>11114,
-			'idsupplier'=>5,
-			'tgltrx'=> date("2017-03-03")
-			);
-		$detailVal1 = array(
-			'idtrxdetail'=>11,
-			'idtrxheader'=>'trx1',
-			'idproduk'=>4,
-			'qty'=>2000,
-			'harga'=>1000000
-			);
-			$detailVal2 = array(
-			'idtrxdetail'=>12,
-			'idtrxheader'=>'trx1',
-			'idproduk'=>5,
-			'qty'=>200,
-			'harga'=>300000
-			);
+	// function case(){
+	// 	$this->load->model(array('trxHeaderModel', 'trxReturModel', 'trxDetailModel'));
+	// 	$headerVal = array(
+	// 		'idtrxheader'=>'trx1',
+	// 		'idtrxtype'=>771,
+	// 		'idstatus'=>11114,
+	// 		'idsupplier'=>5,
+	// 		'tgltrx'=> date("2017-03-03")
+	// 		);
+	// 	$detailVal1 = array(
+	// 		'idtrxdetail'=>11,
+	// 		'idtrxheader'=>'trx1',
+	// 		'idproduk'=>4,
+	// 		'qty'=>2000,
+	// 		'harga'=>1000000
+	// 		);
+	// 		$detailVal2 = array(
+	// 		'idtrxdetail'=>12,
+	// 		'idtrxheader'=>'trx1',
+	// 		'idproduk'=>5,
+	// 		'qty'=>200,
+	// 		'harga'=>300000
+	// 		);
 
-		$returVal = array(
-			'idtrxretur'=>22,
-			'idtrxheader'=>'trx1',
-			'idproduk'=>4,
-			'qty'=>500
-		);
-		$headInsert = $this->trxHeaderModel->save($headerVal);
-		$det1Insert = $this->trxDetailModel->save($detailVal1);
-		$det2Insert = $this->trxDetailModel->save($detailVal2);
-		$retuR = $this->trxReturModel->save($returVal);
-	}
+	// 	$returVal = array(
+	// 		'idtrxretur'=>22,
+	// 		'idtrxheader'=>'trx1',
+	// 		'idproduk'=>4,
+	// 		'qty'=>500
+	// 	);
+	// 	$headInsert = $this->trxHeaderModel->save($headerVal);
+	// 	$det1Insert = $this->trxDetailModel->save($detailVal1);
+	// 	$det2Insert = $this->trxDetailModel->save($detailVal2);
+	// 	$retuR = $this->trxReturModel->save($returVal);
+	// }
 
 	function updateProduct(){
 		//

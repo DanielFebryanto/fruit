@@ -79,7 +79,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="menu_section">
+                        <!-- <div class="menu_section">
                             <h3>Payment</h3>
                             <ul class="nav side-menu">
                                 <li><a><i class="fa fa-bug"></i> Laporan <span class="fa fa-chevron-down"></span></a>
@@ -108,7 +108,7 @@
                                 <li><a><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
 
                     </div>
                     <!-- /sidebar menu -->

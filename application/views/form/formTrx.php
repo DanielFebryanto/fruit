@@ -71,6 +71,24 @@
 						</div>
 						<div class="clearfix"></div>
 						<div class="form-group" style="margin-top: 10px">
+							<label for="middle-name"
+								class="control-label col-md-2 col-sm-3 col-xs-12" style="text-align: left;">No Po</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input type="text" id="NoPo" name="NoPo"
+									required="required" class="form-control col-md-7 col-xs-12">
+							</div>
+						</div>
+						<!-- <div class="clearfix"></div>
+						<div class="form-group" style="margin-top: 10px">
+							<label for="middle-name"
+								class="control-label col-md-2 col-sm-3 col-xs-12" style="text-align: left;">No Do</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input type="text" id="NoDo" name="NoDo"
+									required="required" class="form-control col-md-7 col-xs-12">
+							</div>
+						</div> -->
+						<div class="clearfix"></div>
+						<div class="form-group" style="margin-top: 10px">
 							<label class="control-label col-md-2 col-sm-3 col-xs-12" style="text-align: left;"
 								for="last-name">No Tlp <span class="required">*</span>
 							</label>
@@ -365,6 +383,8 @@ function selectedProduk(id){
 		var tangKir = $("#tglkirim").val();
 		var noTelp	= $("#noTlp").val();
 		var alamats	= $("#alamat").val();
+		var nopo 	= $("#NoPo").val();
+		//var nodo 	= $("#NoDo").val();
 
 
 		console.log("tanggal", idPembeli);
@@ -374,12 +394,16 @@ function selectedProduk(id){
 				idpem: idPembeli,
 				//name: namaPem,
 				tangskir: tangKir,
+				nopo: nopo,
+				//nodo: nodo,
 				detail : kirim
 				//notlp: noTelp,
 				//alamat: alamats
 			},
 			function(data, status){
         	//alert("Data: " + data + "\nStatus: " + status);
+        	alert("Succsess To Save Data.");
+        	window.location.href = "<?php echo base_url('trx/create')?>";
     	});
 
 
