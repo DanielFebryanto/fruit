@@ -64,4 +64,16 @@ class TrxDetailModel extends CI_Model {
 		$dep = $this->db->get('trxdetail');
 		return $dep;
 	}
+
+	function getReturByClause($clause){
+		$this->db->select('*');
+		$this->db->join('trxHeader', 'trxHeader.idtrxheader = trxDetail.idtrxheader');
+		$this->db->join('status', 'status.idstatus = trxheader.idstatus');
+		$this->db->join('supplier', 'supplier.idsupplier = trxheader.idsupplier');
+		$this->db->join('suppliertype', 'suppliertype.idsuppliertype = supplier.idsuppliertype');
+		$this->db->join('produk', 'trxDetail.idproduk = produk.idproduk');
+		$this->db->where($clause);
+		$dep = $this->db->get('trxdetail');
+		return $dep;
+	}
 }
