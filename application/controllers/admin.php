@@ -46,6 +46,7 @@ class Admin extends CI_Controller {
 	}
 	function logout(){
 		$this->session->unset_userdata('username');
+		redirect('admin/login');
 	}
 	function test(){
 		$data['test'] = '';
