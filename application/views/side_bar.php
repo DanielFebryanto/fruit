@@ -77,6 +77,13 @@
                                         </li>
                                     </ul>
                                 </li>
+                                <li><a><i class="fa fa-envelope"></i>  Retur<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu" style="display: none">
+                                        <li><a href="<?php echo base_url() ?>retur/index"> Daftar Retur</a>
+                                        </li>
+                                        </li>
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
                         <!-- <div class="menu_section">

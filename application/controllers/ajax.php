@@ -81,7 +81,8 @@ class Ajax extends CI_Controller {
 			'tgltrx' => date("Y-m-d", strtotime($_POST['tangskir'])),
 			'idtrxtype' => 1,
 			'idstatus' => 11114,
-			'nopo' => $_POST['nopo']
+			'nopo' => $_POST['nopo'],
+			'retur'=>'NO'
 			//'nodo' => $_POST['nodo']
 		);
 		$insert = $this->trxHeaderModel->save($value);

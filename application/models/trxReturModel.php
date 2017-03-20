@@ -19,7 +19,7 @@ class TrxReturModel extends CI_Model {
 	function edit($clause, $value){
 		$this->db->trans_begin();
 		
-		$this->db->where('trxretur', $clause);
+		$this->db->where('idtrxretur' , $clause);
 		
 		$this->db->update('trxretur', $value);
 		
@@ -49,12 +49,23 @@ class TrxReturModel extends CI_Model {
 	}
 
 	function getAll(){
+		$this->db->select('*');
+		$this->db->join('trxHeader', 'trxHeader.idtrxheader = trxretur.idtrxheader');
+		$this->db->join('status', 'status.idstatus = trxheader.idstatus');
+		$this->db->join('supplier', 'supplier.idsupplier = trxheader.idsupplier');
+		$this->db->join('suppliertype', 'suppliertype.idsuppliertype = supplier.idsuppliertype');
+		$this->db->join('produk', 'trxretur.idproduk = produk.idproduk');
 		$dep = $this->db->get('trxretur');
 		return $dep;
 	}
 
 	function getByClause($clause){
 		$this->db->select('*');
+		$this->db->join('trxHeader', 'trxHeader.idtrxheader = trxretur.idtrxheader');
+		$this->db->join('status', 'status.idstatus = trxheader.idstatus');
+		$this->db->join('supplier', 'supplier.idsupplier = trxheader.idsupplier');
+		$this->db->join('suppliertype', 'suppliertype.idsuppliertype = supplier.idsuppliertype');
+		$this->db->join('produk', 'trxretur.idproduk = produk.idproduk');
 		$this->db->where($clause);
 		$dep = $this->db->get('trxretur');
 		return $dep;
