@@ -41,7 +41,13 @@ class Retur extends CI_Controller {
                 'idproduk'=>$_POST['idproduk_'.$i.''],
                 'qty'=>$_POST['returQty_'.$i.'']
             );
+            if($_POST['returQty_'.$i.''] != null){
             $this->trxReturModel->save($returVal);
+            $updateClause = $_POST['header'];
+            
+            $val = array('retur'=>'YES');
+            $this->trxHeaderModel->edit($updateClause, $val);
+            }
             }
             redirect('retur/index');
     }

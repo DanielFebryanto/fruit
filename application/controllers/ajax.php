@@ -69,6 +69,7 @@ class Ajax extends CI_Controller {
 	function saveTrxHeader(){
 		$this->load->model('trxHeaderModel');
 		$this->load->model('trxDetailModel');
+		$this->load->model('produkModel');
 
 		// $idpem = $_POST['idpem'];
   //   	$tanggalkirim = $_POST['tangskir'];
@@ -95,12 +96,16 @@ class Ajax extends CI_Controller {
 				'harga' => $val['harga']
 			);
 			$insertDetail = $this->trxDetailModel->save($detVal);
+			$proClause = array('idproduk'=>$val['idProduk']);
+			$p = $this->produkModel->getByClause($proClause);
+			foreach($p->result_array() as $row){
+				$stok = $row['stok'];
+			}
+			$newStok = $stok - $val['qtyP'];
+			$proVal = array('stok'=>$newStok);
+
+			$gePro = $this->produkModel->edit($proClause, $proVal);
 		}
-		
-		
-
-
-
 		
 	}
 
