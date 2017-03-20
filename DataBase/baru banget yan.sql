@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2017 at 09:49 AM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 5.6.28
+-- Generation Time: 20 Mar 2017 pada 16.45
+-- Versi Server: 10.1.13-MariaDB
+-- PHP Version: 7.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `departement`
+-- Struktur dari tabel `departement`
 --
 
 CREATE TABLE `departement` (
@@ -32,17 +32,18 @@ CREATE TABLE `departement` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `departement`
+-- Dumping data untuk tabel `departement`
 --
 
 INSERT INTO `departement` (`iddepartement`, `departementname`) VALUES
 (121, 'Gudang'),
-(122, 'Admin');
+(122, 'Admin'),
+(123, 'Tes Nambah');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `karyawan`
+-- Struktur dari tabel `karyawan`
 --
 
 CREATE TABLE `karyawan` (
@@ -58,17 +59,16 @@ CREATE TABLE `karyawan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `karyawan`
+-- Dumping data untuk tabel `karyawan`
 --
 
 INSERT INTO `karyawan` (`idkaryawan`, `idstatus`, `idposisi`, `namapanjang`, `email`, `password`, `alamat`, `kontak`, `gender`) VALUES
-(1, 11110, 3, 'Sigit Pramono', 'sigit@gmail.com', '121212', NULL, '0858454545455', 'M'),
-(2, 11110, 4, 'Jaka Ardiola', 'Jack@gg.com', '1232', NULL, NULL, 'M');
+(1, 11110, 3, 'Sigit Pramono', 'sigit@gmail.com', '121212', NULL, '0858454545455', 'M');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pembayaran`
+-- Struktur dari tabel `pembayaran`
 --
 
 CREATE TABLE `pembayaran` (
@@ -82,7 +82,7 @@ CREATE TABLE `pembayaran` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `posisi`
+-- Struktur dari tabel `posisi`
 --
 
 CREATE TABLE `posisi` (
@@ -92,7 +92,7 @@ CREATE TABLE `posisi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `posisi`
+-- Dumping data untuk tabel `posisi`
 --
 
 INSERT INTO `posisi` (`idposisi`, `iddepartement`, `posisiname`) VALUES
@@ -104,7 +104,7 @@ INSERT INTO `posisi` (`idposisi`, `iddepartement`, `posisiname`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produk`
+-- Struktur dari tabel `produk`
 --
 
 CREATE TABLE `produk` (
@@ -117,16 +117,17 @@ CREATE TABLE `produk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `produk`
+-- Dumping data untuk tabel `produk`
 --
 
 INSERT INTO `produk` (`idproduk`, `idprodukkat`, `idstatus`, `namaproduk`, `stok`, `harga`) VALUES
-(300, 1000, 11118, 'Anggur', 300, 800000);
+(4, 1002, 11118, 'Anggur', 30, 1000000),
+(5, 1003, 11118, 'Anggur Merah', 12, 3000000);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produkkat`
+-- Struktur dari tabel `produkkat`
 --
 
 CREATE TABLE `produkkat` (
@@ -135,17 +136,17 @@ CREATE TABLE `produkkat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `produkkat`
+-- Dumping data untuk tabel `produkkat`
 --
 
 INSERT INTO `produkkat` (`idprodukkat`, `produkkatname`) VALUES
-(1000, 'Super'),
-(1001, 'Super Premium');
+(1002, 'Super'),
+(1003, 'Super Premium');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `status`
+-- Struktur dari tabel `status`
 --
 
 CREATE TABLE `status` (
@@ -154,7 +155,7 @@ CREATE TABLE `status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `status`
+-- Dumping data untuk tabel `status`
 --
 
 INSERT INTO `status` (`idstatus`, `statusname`) VALUES
@@ -163,13 +164,17 @@ INSERT INTO `status` (`idstatus`, `statusname`) VALUES
 (11112, 'Sukses'),
 (11113, 'Batal'),
 (11114, 'Tunda'),
-(11115, 'ETC'),
-(11118, 'Tersedia');
+(11115, 'Belum Dibayar'),
+(11117, 'Stok Kurang'),
+(11118, 'Tersedia'),
+(11119, 'Sudah Dibayar'),
+(11121, 'Terkirim'),
+(11122, 'Belum Terkirim');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `supplier`
+-- Struktur dari tabel `supplier`
 --
 
 CREATE TABLE `supplier` (
@@ -184,19 +189,17 @@ CREATE TABLE `supplier` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `supplier`
+-- Dumping data untuk tabel `supplier`
 --
 
 INSERT INTO `supplier` (`idsupplier`, `idsuppliertype`, `idstatus`, `namaPT`, `email`, `kontak`, `alamat`, `tglgabung`) VALUES
-(1, 111, 11110, 'PT. Naufal Sejahterad', 'nau@gmail.com', '085452122', 'Bebas', '2017-01-01'),
-(2, 112, 11110, 'PT. Pagpug', 'service@pagpug.com', '08512456', 'Bebas', '2017-01-01'),
-(3, 111, 11110, 'tes aja', 'tesaja@gmail.com', '0987878312', 'jl.singkawang1', '2017-01-15'),
-(4, 112, 11110, 'dinar', 'dinar@gmail.com', '0987656768', 'jl.rawabelong', '2017-01-15');
+(4, 112, 11110, 'Bhotak', 'botak@gmail.com', '085763536465', 'jl.kalimalang ', '2017-02-26'),
+(5, 111, 11110, 'Ucing', 'ucing@gmail.com', '085764756678', 'jl.puloppiun', '2017-03-04');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `suppliertype`
+-- Struktur dari tabel `suppliertype`
 --
 
 CREATE TABLE `suppliertype` (
@@ -205,17 +208,17 @@ CREATE TABLE `suppliertype` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `suppliertype`
+-- Dumping data untuk tabel `suppliertype`
 --
 
 INSERT INTO `suppliertype` (`idsuppliertype`, `suppliertypename`) VALUES
-(111, 'Pemasok'),
+(111, 'pemasok'),
 (112, 'Pembeli');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `trxdetail`
+-- Struktur dari tabel `trxdetail`
 --
 
 CREATE TABLE `trxdetail` (
@@ -226,10 +229,18 @@ CREATE TABLE `trxdetail` (
   `harga` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `trxdetail`
+--
+
+INSERT INTO `trxdetail` (`idtrxdetail`, `idtrxheader`, `idproduk`, `qty`, `harga`) VALUES
+(1, '58cff710cc763', 4, 800, 1000000),
+(2, '58cff710cc763', 5, 95000, 3000000);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `trxheader`
+-- Struktur dari tabel `trxheader`
 --
 
 CREATE TABLE `trxheader` (
@@ -237,27 +248,44 @@ CREATE TABLE `trxheader` (
   `idtrxtype` int(11) NOT NULL,
   `idstatus` int(11) NOT NULL,
   `idsupplier` int(11) NOT NULL,
-  `tgltrx` date NOT NULL
+  `tgltrx` date NOT NULL,
+  `nopo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `trxheader`
+--
+
+INSERT INTO `trxheader` (`idtrxheader`, `idtrxtype`, `idstatus`, `idsupplier`, `tgltrx`, `nopo`) VALUES
+('58cff710cc763', 1, 11114, 4, '2017-03-31', '454');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `trxretur`
+-- Struktur dari tabel `trxretur`
 --
 
 CREATE TABLE `trxretur` (
   `idtrxretur` int(11) NOT NULL,
   `idtrxheader` varchar(50) NOT NULL,
-  `idstatus` int(11) NOT NULL,
   `idproduk` int(11) NOT NULL,
   `qty` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `trxretur`
+--
+
+INSERT INTO `trxretur` (`idtrxretur`, `idtrxheader`, `idproduk`, `qty`) VALUES
+(2, '58cff710cc763', 4, 300),
+(3, '58cff710cc763', 5, 5000),
+(4, '58cff710cc763', 4, 200),
+(5, '58cff710cc763', 5, 200);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `trxtype`
+-- Struktur dari tabel `trxtype`
 --
 
 CREATE TABLE `trxtype` (
@@ -266,12 +294,12 @@ CREATE TABLE `trxtype` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `trxtype`
+-- Dumping data untuk tabel `trxtype`
 --
 
 INSERT INTO `trxtype` (`idtrxtype`, `trxtypename`) VALUES
-(771, 'Request'),
-(772, 'Purchase');
+(1, 'PR'),
+(2, 'PO');
 
 --
 -- Indexes for dumped tables
@@ -362,7 +390,6 @@ ALTER TABLE `trxheader`
 ALTER TABLE `trxretur`
   ADD PRIMARY KEY (`idtrxretur`),
   ADD KEY `fk_trxretur_trxheader1_idx` (`idtrxheader`),
-  ADD KEY `fk_trxretur_status1_idx` (`idstatus`),
   ADD KEY `fk_trxretur_produk1_idx` (`idproduk`);
 
 --
@@ -379,12 +406,12 @@ ALTER TABLE `trxtype`
 -- AUTO_INCREMENT for table `departement`
 --
 ALTER TABLE `departement`
-  MODIFY `iddepartement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+  MODIFY `iddepartement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 --
 -- AUTO_INCREMENT for table `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `idkaryawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idkaryawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `posisi`
 --
@@ -394,22 +421,22 @@ ALTER TABLE `posisi`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `idproduk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=301;
+  MODIFY `idproduk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `produkkat`
 --
 ALTER TABLE `produkkat`
-  MODIFY `idprodukkat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1002;
+  MODIFY `idprodukkat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1004;
 --
 -- AUTO_INCREMENT for table `status`
 --
 ALTER TABLE `status`
-  MODIFY `idstatus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11119;
+  MODIFY `idstatus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11123;
 --
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `idsupplier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idsupplier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `suppliertype`
 --
@@ -419,63 +446,63 @@ ALTER TABLE `suppliertype`
 -- AUTO_INCREMENT for table `trxdetail`
 --
 ALTER TABLE `trxdetail`
-  MODIFY `idtrxdetail` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idtrxdetail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `trxretur`
 --
 ALTER TABLE `trxretur`
-  MODIFY `idtrxretur` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idtrxretur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `trxtype`
 --
 ALTER TABLE `trxtype`
-  MODIFY `idtrxtype` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=773;
+  MODIFY `idtrxtype` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `karyawan`
+-- Ketidakleluasaan untuk tabel `karyawan`
 --
 ALTER TABLE `karyawan`
   ADD CONSTRAINT `fk_karyawan_posisi1` FOREIGN KEY (`idposisi`) REFERENCES `posisi` (`idposisi`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_karyawan_status1` FOREIGN KEY (`idstatus`) REFERENCES `status` (`idstatus`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `pembayaran`
+-- Ketidakleluasaan untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
   ADD CONSTRAINT `fk_pembayaran_trxheader1` FOREIGN KEY (`idtrx`) REFERENCES `trxheader` (`idtrxheader`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `posisi`
+-- Ketidakleluasaan untuk tabel `posisi`
 --
 ALTER TABLE `posisi`
   ADD CONSTRAINT `fk_posisi_departement1` FOREIGN KEY (`iddepartement`) REFERENCES `departement` (`iddepartement`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `produk`
+-- Ketidakleluasaan untuk tabel `produk`
 --
 ALTER TABLE `produk`
   ADD CONSTRAINT `fk_produk_produkkat1` FOREIGN KEY (`idprodukkat`) REFERENCES `produkkat` (`idprodukkat`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_produk_status1` FOREIGN KEY (`idstatus`) REFERENCES `status` (`idstatus`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `supplier`
+-- Ketidakleluasaan untuk tabel `supplier`
 --
 ALTER TABLE `supplier`
   ADD CONSTRAINT `fk_supplier_status1` FOREIGN KEY (`idstatus`) REFERENCES `status` (`idstatus`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_supplier_suppliertype1` FOREIGN KEY (`idsuppliertype`) REFERENCES `suppliertype` (`idsuppliertype`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `trxdetail`
+-- Ketidakleluasaan untuk tabel `trxdetail`
 --
 ALTER TABLE `trxdetail`
   ADD CONSTRAINT `fk_trxdetail_produk1` FOREIGN KEY (`idproduk`) REFERENCES `produk` (`idproduk`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_trxdetail_trxheader1` FOREIGN KEY (`idtrxheader`) REFERENCES `trxheader` (`idtrxheader`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `trxheader`
+-- Ketidakleluasaan untuk tabel `trxheader`
 --
 ALTER TABLE `trxheader`
   ADD CONSTRAINT `fk_trxheader_status1` FOREIGN KEY (`idstatus`) REFERENCES `status` (`idstatus`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -483,11 +510,10 @@ ALTER TABLE `trxheader`
   ADD CONSTRAINT `fk_trxheader_trxtype1` FOREIGN KEY (`idtrxtype`) REFERENCES `trxtype` (`idtrxtype`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `trxretur`
+-- Ketidakleluasaan untuk tabel `trxretur`
 --
 ALTER TABLE `trxretur`
   ADD CONSTRAINT `fk_trxretur_produk1` FOREIGN KEY (`idproduk`) REFERENCES `produk` (`idproduk`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_trxretur_status1` FOREIGN KEY (`idstatus`) REFERENCES `status` (`idstatus`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_trxretur_trxheader1` FOREIGN KEY (`idtrxheader`) REFERENCES `trxheader` (`idtrxheader`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
