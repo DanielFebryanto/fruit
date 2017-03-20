@@ -70,7 +70,7 @@
                                         <thead>
                                             <tr class="headings">
                                                 <!-- <th>#</th> -->
-                                                <!-- <th>Id</th> -->
+                                                <!-- <th>No</th> -->
                                                 <th>Nama Produk</th>
                                                 <th>Kategori</th>
                                                 <th>Qty</th>

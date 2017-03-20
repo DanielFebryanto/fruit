@@ -113,7 +113,7 @@ class Trx extends CI_Controller {
 		$this->template->display('table/tableDashboard',$data);
 	}
 	function detail($id){
-		$data['title'] = 'Detail Transaksi';
+		
 		$this->load->model(array('trxHeaderModel','trxDetailModel','trxReturModel'));
 		$clause = array('trxheader.idtrxheader'=>$id);
 
@@ -124,7 +124,10 @@ class Trx extends CI_Controller {
 		$data['header'] = $this->trxHeaderModel->getByClause($clause);
 		$data['detail'] = $this->trxDetailModel->getByClause($detClause);
 		$data['retur'] = $this->trxReturModel->getByClause($returClause);
-
+		foreach($data['header']->result_array() as $row){
+			$titled = $row['idtrxheader'];
+		}
+		$data['title'] = 'ID Transaksi : '.$titled.'';
 		$this->template->display('/table/tableDetail', $data);
 	}
 }
