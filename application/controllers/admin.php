@@ -13,10 +13,40 @@ class Admin extends CI_Controller {
 		return $data;
 	}
 	function index(){
+		if(!$this->session->userdata('username')){
+			redirect('admin/login');
+		}else{
 		$data['title'] = 'Dashboard';
 		$this->template->display('home',$data);
+		}
 	}
-	
+	function login(){
+		$this->load->view('login');
+	}
+	function doLogin(){
+		if($this->session->userdata('username')){
+			redirect('admin/index');
+		}else{
+		$clause = array(
+			'email'=>$_POST['email'],
+			'password'=>$_POST['password']
+		);
+		$this->load->model('karyawanModel');
+		$check = $this->karyawanModel->getByClause($clause);
+		foreach($check->result_array() as $row){
+			
+		$sessionVal = array(
+			'username'=> $row['namapanjang']
+			);
+
+			$this->session->set_userdata($sessionVal);
+		}
+		redirect('admin/index');
+		}
+	}
+	function logout(){
+		$this->session->unset_userdata('username');
+	}
 	function test(){
 		$data['test'] = '';
 		$this->template->display('testForm',$data);
@@ -151,9 +181,6 @@ class Admin extends CI_Controller {
 		$this->load->model('departementModel');
 		$value = array('id'=>'D-1001', 'depName'=>'test');
 		$save = $this->departementModel->save($value);
-	}
-	function login(){
-		$this->load->view('login');
 	}
 	function generateIdSupplier(){
 		$this->load->model('supplierModel');

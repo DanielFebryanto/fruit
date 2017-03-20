@@ -7,12 +7,12 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="<?php echo base_url() ?>assets/images/picture.jpg" alt="">
-                                    John Doe 
+                                    <img src="<?php echo base_url() ?>assets/images/user.png" alt="">
+                                    <?php echo $this->session->userdata('username') ?> 
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
-                                    <li><a href="<?php echo base_url() ?>index.php/admin/profile">  Profile</a>
+                                   <!--  <li><a href="<?php echo base_url() ?>index.php/admin/profile">  Profile</a>
                                     </li>
                                     <li>
                                         <a href="javascript:;">
@@ -22,7 +22,7 @@
                                     </li>
                                     <li>
                                         <a href="javascript:;">Help</a>
-                                    </li>
+                                    </li> -->
                                     <li><a href="<?php echo base_url() ?>admin/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                                     </li>
                                 </ul>
