@@ -1,7 +1,7 @@
 <div class="left_col scroll-view">
 
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
+                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Fruit Shop!</span></a>
                     </div>
                     <div class="clearfix"></div>
 
@@ -9,11 +9,11 @@
                     <div class="profile">
                         <a href="<?php echo base_url() ?>admin/profile">
                         <div class="profile_pic">
-                            <img src="<?php echo base_url() ?>assets/images/picture.jpg" alt="..." class="img-circle profile_img">
+                            <img src="<?php echo base_url() ?>assets/images/user.png" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
                             <span>Welcome,</span>
-                            <h2><?php echo"Dann" ?></h2>
+                            <h2><?php echo $this->session->userdata('username') ?></h2>
                         </div>
                             </a>
                     </div>
@@ -25,7 +25,7 @@
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
                         <div class="menu_section">
-                            <h3>General Manager</h3>
+                            <h3>General</h3>
                             <ul class="nav side-menu">
                                 <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
