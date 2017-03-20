@@ -80,7 +80,9 @@ class Ajax extends CI_Controller {
 			'idsupplier' => $_POST['idpem'],
 			'tgltrx' => date("Y-m-d", strtotime($_POST['tangskir'])),
 			'idtrxtype' => 1,
-			'idstatus' => 11114
+			'idstatus' => 11114,
+			'nopo' => $_POST['nopo']
+			//'nodo' => $_POST['nodo']
 		);
 		$insert = $this->trxHeaderModel->save($value);
 
@@ -99,6 +101,33 @@ class Ajax extends CI_Controller {
 
 
 		
+	}
+
+
+	function UpdateTrxHeader(){
+		$this->load->model('trxHeaderModel');
+
+		//echo (json_encode($_POST['idheader']));
+
+		$value = array (
+			'idstatus' => 11119,
+			'idtrxtype' => 2
+		);
+
+		$clause = $_POST['idheader'];
+		//echo $clause;
+
+		// foreach ($_POST['idheader'] as $clause) {
+		// 	$idheader = array (
+		// 		'idtrxheader' => $clause['idhead']
+		// 	);
+		// };
+		
+		// $idheader = array (
+		// 	'idtrxheader' => $_POST['idhead']
+		// );
+
+		$update = $this->trxHeaderModel->edit($clause, $value);
 	}
 
 

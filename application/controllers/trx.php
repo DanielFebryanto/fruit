@@ -62,7 +62,8 @@ class Trx extends CI_Controller {
 		$data['title'] = 'table purchase request';
 		$clause = array(
 			'status.idstatus'=> 11114, /// tunda/pending
-			'suppliertype.idsuppliertype'=> 112 //pembeli
+			'suppliertype.idsuppliertype'=> 112, //pembeli
+			'idtrxtype' => 1
 		);
 		$data['getPurchaseRequest'] = $this->trxHeaderModel->getByClause($clause);
 		$this->template->display('table/tablePurchaseRequest',$data);
@@ -90,7 +91,8 @@ class Trx extends CI_Controller {
 		$data['title'] = 'table delivery order';
 		$clause = array(
 			'status.idstatus'=> 11119, // disetujui
-			'suppliertype.idsuppliertype'=> 112 //pembeli
+			'suppliertype.idsuppliertype'=> 112, //pembeli
+			'idtrxtype' => 2
 		);
 		$data['getDeliveryOrder'] = $this->trxHeaderModel->getByClause($clause);
 		$this->template->display('table/tableDeliveryOrder',$data);

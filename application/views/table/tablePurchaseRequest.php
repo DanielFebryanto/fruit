@@ -36,7 +36,6 @@
      </div>
 <?php } ?>
                     <div class="row">
-
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
@@ -58,8 +57,11 @@
                                     </ul>
                                     <div class="clearfix"></div>
                                 </div>
+
                                 <div class="x_content">
-                                    <table id="example" class="table table-striped responsive-utilities jambo_table bulk_action">
+                                    <div><button id="approve" class="btn btn-success">Approve</button></div>
+                                    <!-- <div class="Search" style="float: right; margin-bottom: 10px"><input type="text" name="Search"></div> -->
+                                    <table id="example" class="table table-striped responsive-utilities jambo_table bulk_action tabs">
                                         <thead>
                                             <tr class="headings">
                                                 <!-- <th>
@@ -69,6 +71,7 @@
                                                     <input type="checkbox" id="check-all" class="flat">
                                                 </th>
                                                 <th>Nama Pembeli </th>
+                                                <th>No PO </th>
                                                 <th>Kategori </th>
                                                 <th>Tgl Transaksi </th>
                                                 <th>Kontak </th>
@@ -80,12 +83,14 @@
 
                                         <tbody>
                                             <?php foreach ($getPurchaseRequest->result_array() as $row) {?>
-                                            <tr class="even pointer">
+                                            <tr class="even pointer bawah">
                                                 <!-- <td class="a-center ">
                                                     <input type="checkbox" class="tableflat">
                                                 </td> -->
-                                                <td class="a-center "><input type="checkbox" class="flat" name="table_records" ></td>
+                                                <td class="a-center "><input type="checkbox" class="flat" name="table_records"></td>
+                                                <td class="tes" style="display: none;"><input type="text" name="idheader" id="idheader" value="<?php echo $row['idtrxheader'] ?>"></td>
                                                 <td class=" "><?php echo $row['namaPT'] ?></td>
+                                                <td class=" "><?php echo $row['nopo'] ?></td>
                                                 <td class=" "><?php echo $row['suppliertypename'] ?></td>
                                                 <td class=" "><?php echo $row['tgltrx'] ?></td>
                                                 <td class=" "><?php echo $row['kontak'] ?></td>
@@ -109,3 +114,38 @@
 
                     </div>
                 </div>
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        //alert('asdasdsa');
+        //var getLength = $(".tabs > tr").length;
+        $("#approve").click(function(){
+
+            //var kirim = [];
+            $('.bawah input:checked').each(function() {
+              var id, name;
+              id = $(this).closest('tr').find('#idheader').val();
+              // var idheaderatas = {'idhead':id};
+              // kirim.push(idheaderatas);
+               $.post("<?php echo base_url('ajax/UpdateTrxHeader') ?>",
+                {
+                  idheader: id
+                },
+                function(data, status){
+                //alert("Data: " + data + "\nStatus: " + status);
+                });
+
+               if(status = "success"){
+                alert("Succsess To Save Data.");
+                window.location.href = "<?php echo base_url('trx/purchaseRequest')?>";
+               }
+            })
+
+            
+
+        });
+    });
+</script>
