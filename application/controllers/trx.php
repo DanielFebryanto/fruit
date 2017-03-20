@@ -112,7 +112,19 @@ class Trx extends CI_Controller {
 		$data['getPurchaseRequest'] = $this->trxHeaderModel->getByClause($clause);
 		$this->template->display('table/tableDashboard',$data);
 	}
+	function detail($id){
+		$data['title'] = 'Detail Transaksi';
+		$this->load->model(array('trxHeaderModel','trxDetailModel','trxReturModel'));
+		$clause = array('trxheader.idtrxheader'=>$id);
 
+		$detClause = array('trxdetail.idtrxheader'=>$id);
 
-	
+		$returClause = array('trxretur.idtrxheader'=>$id);
+
+		$data['header'] = $this->trxHeaderModel->getByClause($clause);
+		$data['detail'] = $this->trxDetailModel->getByClause($detClause);
+		$data['retur'] = $this->trxReturModel->getByClause($returClause);
+
+		$this->template->display('/table/tableDetail', $data);
+	}
 }

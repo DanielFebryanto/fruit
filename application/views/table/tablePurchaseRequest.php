@@ -97,7 +97,7 @@
                                                 <td class="a-right a-right "><?php echo $row['statusname'] ?></td>
                                                 <td class=" last">
                                                     <a href="<?php echo base_url('retur/create/'.$row['idtrxheader'].'') ?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                                                    <a href="<?php echo base_url('supplier/delete/'.$row['idsupplier'].'/'.$row['suppliertypename'].'') ?>" class="btn btn-danger" ><i class="fa fa-trash"></i></a>
+                                                    <a href="<?php echo base_url('trx/detail/'.$row['idtrxheader'].'') ?>" class="btn btn-primary" ><i class="fa fa-hand-o-right"></i></a>
                                                 </td>
                                             </tr>
                                             <?php } ?>
