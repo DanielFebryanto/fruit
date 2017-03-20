@@ -41,7 +41,7 @@ class Admin extends CI_Controller {
 
 			$this->session->set_userdata($sessionVal);
 		}
-		redirect('admin/index');
+		redirect('trx/dasboard');
 		}
 	}
 	function logout(){
