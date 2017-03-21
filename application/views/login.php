@@ -41,8 +41,15 @@
     <div class="">
         <a class="hiddenanchor" id="toregister"></a>
         <a class="hiddenanchor" id="tologin"></a>
-
+        <?php  if($this->session->flashdata('error')){ ?>
+	<div class="alert alert-danger alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+        </button>
+        <strong>Error</strong> <?php echo $this->session->flashdata('error') ?>
+     </div>
+<?php } ?>
         <div id="wrapper">
+        
             <div id="login" class="animate form" >
                 <section class="login_content">
                     <form action="<?php echo base_url('admin/doLogin') ?>" method="post">

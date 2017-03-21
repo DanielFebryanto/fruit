@@ -102,6 +102,9 @@ class Trx extends CI_Controller {
 
 	function dasboard()
 	{
+		if(!$this->session->userdata('username')){
+			redirect('admin/login');
+		}else{
 		$this->load->model('trxHeaderModel');
 		$data['title'] = 'table purchase request';
 		$clause = array(
@@ -111,6 +114,7 @@ class Trx extends CI_Controller {
 		);
 		$data['getPurchaseRequest'] = $this->trxHeaderModel->getByClause($clause);
 		$this->template->display('table/tableDashboard',$data);
+		}
 	}
 	function detail($id){
 		

@@ -21,27 +21,32 @@ class Admin extends CI_Controller {
 		}
 	}
 	function login(){
-		$this->load->view('login');
+		if($this->session->userdata('username')){
+			redirect('trx/dasboard');
+			}else{
+			$this->load->view('login');
+		}
 	}
 	function doLogin(){
-		if($this->session->userdata('username')){
-			redirect('admin/index');
-		}else{
+		
 		$clause = array(
 			'email'=>$_POST['email'],
 			'password'=>$_POST['password']
 		);
 		$this->load->model('karyawanModel');
 		$check = $this->karyawanModel->getByClause($clause);
-		foreach($check->result_array() as $row){
-			
-		$sessionVal = array(
-			'username'=> $row['namapanjang']
-			);
+		if($check->num_rows() > 0){
+			foreach($check->result_array() as $row){
+			$sessionVal = array(
+				'username'=> $row['namapanjang']
+				);
 
 			$this->session->set_userdata($sessionVal);
 		}
 		redirect('trx/dasboard');
+		}else {
+			$this->session->set_flashdata('error', 'email atau password salah!');
+			redirect('admin/login');
 		}
 	}
 	function logout(){
